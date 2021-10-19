@@ -1,14 +1,24 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+import {SearchIcon} from "@heroicons/react/solid";
+
 const Header = () => {
   return (
-    <header className="bg-white">
-      <div className="flex">
-	<div className="justify-start"> <h1 className="font-sans"> RANKING </h1> </div>
-	<div className="justify-end">
-	  <div></div>
-	  <div>
+    <header className="shadow-md bg-white py-2">
+      <div className="container justify-between items-center inline-flex px-4">
+	<div> <h1 className="font-sans"> RANKING </h1> </div>
+	<div className="gap-5 w-24 md:w-auto lg:48 grid grid-cols-2 ">
+	  <div className="w-24 w-full bg-blue-400">
+	    <div></div>
+	    <button className="flex items-center justify-center px-2 py-2 ">
+	      <SearchIcon className="h-5"/>
+	    </button>
+	  </div>
+	  <div className="flex items-center gap-5">
+	    <button className="rounded-full w-12 min-w-12" >
+	      <img className="rounded-full" src="https://cultivatedculture.com/wp-content/uploads/2019/12/LinkedIn-Profile-Picture-Example-Madeline-Mann-414x414.jpeg" />
+	    </button>
 	    <Link to="/" className="py-2 px-4 rounded-lg shadow-md bg-green-500 text-white"> Sign up </Link>
 	  </div>
 	</div>
