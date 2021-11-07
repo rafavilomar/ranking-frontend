@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import { SearchIcon } from "@heroicons/react/solid";
+
+import LinkButton from "../buttons/LinkButton";
 
 const Header = () => {
   return (
@@ -26,23 +27,14 @@ const Header = () => {
             {/*--PROFILE BUTTON--*/}
             <button className="rounded-full w-12 min-w-12">
               <img
+								alt="none"
                 className="rounded-full"
                 src="https://cultivatedculture.com/wp-content/uploads/2019/12/LinkedIn-Profile-Picture-Example-Madeline-Mann-414x414.jpeg"
               />
             </button>
             {/*--ACTION BUTTONS--*/}
-            <Link
-              to="/"
-              className="py-2 px-4 rounded-md shadow-md bg-green-500 text-white"
-            >
-              Sign up
-            </Link>
-            <Link
-              to="/"
-              className="py-2 px-4 rounded-md shadow-md bg-green-500 text-white"
-            >
-              Login
-            </Link>
+						<LinkButton value="Sign up" />
+						<LinkButton value="Login" />
           </div>
         </div>
       </div>
