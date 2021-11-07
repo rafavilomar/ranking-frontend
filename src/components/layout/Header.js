@@ -3,6 +3,7 @@ import React from "react";
 import { SearchIcon } from "@heroicons/react/solid";
 
 import LinkButton from "../buttons/LinkButton";
+import Branch from "./Branch";
 
 const Header = () => {
   return (
@@ -10,7 +11,7 @@ const Header = () => {
       <div className="container justify-between items-center inline-flex px-4">
         {/*---BRAND NAME---*/}
         <div>
-          <h1 className="font-sans font-bold text-2xl"> RANKING </h1>
+          <Branch/>
         </div>
 
         <div className="gap-5 w-full flex justify-end lg:48">
