@@ -9,7 +9,7 @@ const Header = () => {
       <div className="container justify-between items-center inline-flex px-4">
         {/*---BRAND NAME---*/}
         <div>
-          <h1 className="font-sans"> RANKING </h1>
+          <h1 className="font-sans font-bold text-2xl"> RANKING </h1>
         </div>
 
         <div className="gap-5 w-full flex justify-end lg:48">
@@ -33,10 +33,15 @@ const Header = () => {
             {/*--ACTION BUTTONS--*/}
             <Link
               to="/"
-              className="py-2 px-4 rounded-lg shadow-md bg-green-500 text-white"
+              className="py-2 px-4 rounded-md shadow-md bg-green-500 text-white"
             >
-              {" "}
-              Sign up{" "}
+              Sign up
+            </Link>
+            <Link
+              to="/"
+              className="py-2 px-4 rounded-md shadow-md bg-green-500 text-white"
+            >
+              Login
             </Link>
           </div>
         </div>
