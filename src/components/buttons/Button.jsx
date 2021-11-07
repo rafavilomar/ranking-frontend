@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-const LinkButton = ({ value, href, type = "normal" }) => {
+const Button = ({ value, funtion, type = "normal" }) => {
   const [className, setClassName] = React.useState("");
 
   React.useEffect(() => {
@@ -11,12 +10,9 @@ const LinkButton = ({ value, href, type = "normal" }) => {
   }, [type]);
 
   return (
-    <Link
-      to={href ? href : "/"}
-      className={`py-2 px-4 rounded-md text-center ${className}`}
-    >
+    <button onClick={funtion} className={`py-2 px-4 rounded-md ${className}`}>
       {value ? value : "Button"}
-    </Link>
+    </button>
   );
 };
-export default LinkButton;
+export default Button;

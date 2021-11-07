@@ -17,7 +17,7 @@ const Header = () => {
           {/*--SEARCH BOX---*/}
           <div className="max-w-md border-gray-400 w-full flex overflow-hidden rounded-md border px-2">
             <div className="w-full h-full">
-							<input className="w-full h-full  border-none focus:shadow-none focus:outline-none px-2" type="text" name="search" id="search" placeholder="Buscar Profesor" />
+							<input className="w-full h-full border-none focus:shadow-none focus:outline-none px-2" type="text" name="search" id="search" placeholder="Buscar Profesor" />
 						</div>
             <button className="flex items-center justify-center px-2 py-2 ">
               <SearchIcon className="h-5" />
@@ -34,7 +34,7 @@ const Header = () => {
             </button>
             {/*--ACTION BUTTONS--*/}
 						<LinkButton value="Sign up" />
-						<LinkButton value="Login" type="primary" />
+						<LinkButton value="Login" type="primary" href="/login" />
           </div>
         </div>
       </div>
