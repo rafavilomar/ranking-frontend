@@ -25,16 +25,16 @@ const Header = () => {
           </div>
           <div className="flex items-center gap-5">
             {/*--PROFILE BUTTON--*/}
-            <button className="rounded-full w-12 min-w-12">
+            <button className="h-12 w-12 flex items-center justify-center rounded-full overflow-hidden hover:shadow-sm hover:border-gray-300">
               <img
 								alt="none"
-                className="rounded-full"
-                src="https://cultivatedculture.com/wp-content/uploads/2019/12/LinkedIn-Profile-Picture-Example-Madeline-Mann-414x414.jpeg"
+                className=""
+                src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
               />
             </button>
             {/*--ACTION BUTTONS--*/}
 						<LinkButton value="Sign up" />
-						<LinkButton value="Login" />
+						<LinkButton value="Login" type="primary" />
           </div>
         </div>
       </div>
