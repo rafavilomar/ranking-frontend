@@ -12,6 +12,7 @@ const Login = () => {
         <TextInput name="password" label="Contraseña" type="password" />
         <LinkButton value="Iniciar Sesión" type="primary" /> {/*//todo: replace for Button*/}
       </div>
+      <LinkButton value="Crear cuenta" type="tertiary" />
     </div>
   );
 };

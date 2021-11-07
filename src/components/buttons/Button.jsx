@@ -4,9 +4,13 @@ const Button = ({ value, funtion, type = "normal" }) => {
   const [className, setClassName] = React.useState("");
 
   React.useEffect(() => {
-    type === "primary"
-      ? setClassName(" shadow-md bg-green-500 text-white")
-      : setClassName(" text-gray-700 border border-gray-400");
+    if (type === "primary") {
+      setClassName(" shadow-md bg-green-500 text-white");
+    } else if (type === "normal") {
+      setClassName(" text-gray-700 border border-gray-400");
+    } else {
+      setClassName(" text-gray-700")
+    }
   }, [type]);
 
   return (
