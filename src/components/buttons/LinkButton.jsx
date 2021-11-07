@@ -17,7 +17,7 @@ const LinkButton = ({ value, href, type = "normal" }) => {
   return (
     <Link
       to={href ? href : "/"}
-      className={`py-2 px-4 rounded-md text-center ${className}`}
+      className={`font-medium py-2 px-4 rounded-md text-center ${className}`}
     >
       {value ? value : "Button"}
     </Link>

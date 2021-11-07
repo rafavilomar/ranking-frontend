@@ -5,9 +5,9 @@ import Branch from "../components/layout/Branch";
 
 const Login = () => {
   return (
-    <div className="flex flex-col justify-center items-center absolute top-0 left-0 right-0 bottom-0">
+    <div className="flex flex-col gap-2 justify-center items-center absolute top-0 left-0 right-0 bottom-0">
       <Branch/>
-      <div className="mt-2 bg-white shadow-md rounded-md p-2 gap-3 flex flex-col overflow-hidden">
+      <div className="mt-2 bg-white shadow-md rounded-md w-80 px-6 py-4 gap-4 flex flex-col overflow-hidden">
         <TextInput name="username" label="Usuario" type="text" />
         <TextInput name="password" label="Contraseña" type="password" />
         <LinkButton value="Iniciar Sesión" type="primary" /> {/*//todo: replace for Button*/}
