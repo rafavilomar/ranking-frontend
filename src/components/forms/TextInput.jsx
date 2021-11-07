@@ -1,6 +1,6 @@
 import React from "react";
 
-const TextInput = ({ name, label, type }) => {
+const TextInput = ({ name, label, type, required = false }) => {
   return (
     <div className="w-full">
       <label className="font-sans font-medium text-gray-600" htmlFor={name}>{label}</label>
@@ -10,6 +10,7 @@ const TextInput = ({ name, label, type }) => {
           type={type}
           name={name}
           id={name}
+          required={required}
         />
       </div>
     </div>
