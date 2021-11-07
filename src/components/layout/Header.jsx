@@ -35,7 +35,7 @@ const Header = () => {
             </button>
             {/*--ACTION BUTTONS--*/}
 						<LinkButton value="Sign up" href="/signup" />
-						<LinkButton value="Login" type="primary" href="/login" />
+						<LinkButton value="Login" style="primary" href="/login" />
           </div>
         </div>
       </div>

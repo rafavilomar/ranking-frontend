@@ -12,9 +12,9 @@ const Signup = () => {
         <TextInput name="email" label="Correo electrónico" type="email" />
         <TextInput name="password" label="Contraseña" type="password" />
         <TextInput name="passwordRepeat" label="Repetir Contraseña" type="password" />
-        <LinkButton value="Crear cuenta" type="primary" /> {/*//todo: replace for Button*/}
+        <LinkButton value="Crear cuenta" style="primary" /> {/*//todo: replace for Button*/}
       </div>
-      <LinkButton value="Iniciar sesión" type="tertiary" href="/login" />
+      <LinkButton value="Iniciar sesión" style="tertiary" href="/login" />
     </div>
   );
 };

@@ -1,20 +1,20 @@
 import React from "react";
 
-const Button = ({ value, funtion, type = "normal" }) => {
+const Button = ({ value, funtion, type = "button", style = "normal" }) => {
   const [className, setClassName] = React.useState("");
 
   React.useEffect(() => {
-    if (type === "primary") {
+    if (style === "primary") {
       setClassName(" shadow-md bg-green-500 text-white");
-    } else if (type === "normal") {
+    } else if (style === "normal") {
       setClassName(" text-gray-700 border border-gray-400");
     } else {
       setClassName(" text-gray-700")
     }
-  }, [type]);
+  }, [style]);
 
   return (
-    <button onClick={funtion} className={`py-2 px-4 rounded-md ${className}`}>
+    <button type={type} onClick={funtion} className={`py-2 px-4 rounded-md ${className}`}>
       {value ? value : "Button"}
     </button>
   );

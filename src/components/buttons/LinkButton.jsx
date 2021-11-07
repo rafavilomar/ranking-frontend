@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const LinkButton = ({ value, href, type = "normal" }) => {
+const LinkButton = ({ value, href, style = "normal" }) => {
   const [className, setClassName] = React.useState("");
 
   React.useEffect(() => {
-    if (type === "primary") {
+    if (style === "primary") {
       setClassName(" shadow-md bg-green-500 text-white");
-    } else if (type === "normal") {
+    } else if (style === "normal") {
       setClassName(" text-gray-700 border border-gray-400");
     } else {
       setClassName(" text-gray-700");
     }
-  }, [type]);
+  }, [style]);
 
   return (
     <Link

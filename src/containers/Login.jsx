@@ -10,9 +10,9 @@ const Login = () => {
       <div className="mt-2 bg-white shadow-md rounded-md w-80 px-6 py-4 gap-4 flex flex-col overflow-hidden">
         <TextInput name="username" label="Usuario" type="text" />
         <TextInput name="password" label="Contraseña" type="password" />
-        <LinkButton value="Iniciar Sesión" type="primary" /> {/*//todo: replace for Button*/}
+        <LinkButton value="Iniciar Sesión" style="primary" /> {/*//todo: replace for Button*/}
       </div>
-      <LinkButton value="Crear cuenta" type="tertiary" href="/signup" />
+      <LinkButton value="Crear cuenta" style="tertiary" href="/signup" />
     </div>
   );
 };
