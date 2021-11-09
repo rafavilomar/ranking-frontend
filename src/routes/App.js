@@ -5,7 +5,7 @@ import {Route, Switch} from "react-router-dom";
 import Login from "../containers/Login";
 import Signup from "../containers/Signup";
 import Home from "../containers/Home";
-import Profile from "../containers/Profile";
+import MyProfile from "../containers/MyProfile";
 
 const App = () => {
   return (
@@ -13,7 +13,7 @@ const App = () => {
       <Route exact path="/" component={Home}/>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/signup" component={Signup}/>
-      <Route exact path="/my-profile" component={Profile}/>
+      <Route exact path="/my-profile" component={MyProfile}/>
     </Switch>
   );
 }

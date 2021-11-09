@@ -10,9 +10,9 @@ const Signup = () => {
       <Branch />
       <div className="mt-2 bg-white shadow-md rounded-md w-80 px-6 py-4 overflow-hidden">
         <form className="gap-4 flex flex-col" action="/" method="post">
-          <TextInput name="username" label="Usuario" type="text" />
-          <TextInput name="email" label="Correo electrónico" type="email" />
-          <TextInput name="password" label="Contraseña" type="password" />
+          <TextInput name="username" label="Usuario" type="text" required/>
+          <TextInput name="email" label="Correo electrónico" type="email" required/>
+          <TextInput name="password" label="Contraseña" type="password" required/>
           <TextInput
             name="passwordRepeat"
             label="Repetir Contraseña"

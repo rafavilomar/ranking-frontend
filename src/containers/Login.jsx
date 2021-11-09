@@ -10,8 +10,8 @@ const Login = () => {
       <Branch />
       <div className="mt-2 bg-white shadow-md rounded-md w-80 px-6 py-4 overflow-hidden">
         <form className="gap-4 flex flex-col" action="/" method="post">
-          <TextInput name="username" label="Usuario" type="text" />
-          <TextInput name="password" label="Contraseña" type="password" />
+          <TextInput name="username" label="Usuario" type="text" required/>
+          <TextInput name="password" label="Contraseña" type="password" required/>
           <Button type="submit" value="Iniciar Sesión" style="primary" />
         </form>
       </div>
