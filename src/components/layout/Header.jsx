@@ -4,6 +4,7 @@ import { SearchIcon } from "@heroicons/react/solid";
 
 import LinkButton from "../buttons/LinkButton";
 import Branch from "./Branch";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -11,7 +12,9 @@ const Header = () => {
       <div className="container justify-between items-center inline-flex px-4">
         {/*---BRAND NAME---*/}
         <div>
-          <Branch />
+          <Link to="/">
+            <Branch />
+          </Link>
         </div>
 
         <div className="gap-5 w-full flex justify-end lg:48">
