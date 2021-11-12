@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ value, funtion, type = "button", style = "normal", full = false }) => {
+const IconButton = ({ children, funtion, type = "button", style = "normal" }) => {
   const [className, setClassName] = React.useState("");
 
   React.useEffect(() => {
@@ -14,9 +14,9 @@ const Button = ({ value, funtion, type = "button", style = "normal", full = fals
   }, [style]);
 
   return (
-    <button type={type} onClick={funtion} className={`py-2 px-4 rounded-md ${className} ${full && "w-full"}`}>
-      {value ? value : "Button"}
+    <button type={type} onClick={funtion} className="right-2 bottom-2 z-10 bg-gray-600 p-2 rounded-md">
+      {children}
     </button>
   );
-};
-export default Button;
+}
+export default IconButton;

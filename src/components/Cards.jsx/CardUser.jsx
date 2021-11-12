@@ -16,10 +16,10 @@ const CardUser = ({ type = "NORMAL", image, title, content, rate, color }) => {
 
   return (
     <div
-      className={`${className} mt-5 shadow-md relative flex items-center justify-center`}
+      className={`${className} rounded-xl  mt-5 shadow-md relative flex items-center justify-center`}
     >
       <span
-        className={`${color} font-sans text-2xl font-semibold absolute flex justify-center items-center -top-7 left-auto right-auto bottom-auto rounded-br-full rounded-bl-full bg-red-400 w-14 h-14`}
+        className={`${color} font-sans text-2xl font-semibold absolute flex justify-center items-center -top-5 left-auto right-auto bottom-auto rounded-br-full rounded-bl-full bg-red-400 w-14 h-14`}
       >
         {rate}
       </span>
