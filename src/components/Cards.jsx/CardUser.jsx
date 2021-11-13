@@ -1,6 +1,14 @@
 import React from "react";
 
-const CardUser = ({ type = "NORMAL", image, title, content, rate, color }) => {
+const CardUser = ({
+  type = "NORMAL",
+  image,
+  title,
+  content,
+  rate,
+  color,
+  votes = 300,
+}) => {
   const [className, setClassName] = React.useState();
 
   React.useEffect(
@@ -27,7 +35,7 @@ const CardUser = ({ type = "NORMAL", image, title, content, rate, color }) => {
         <img src={image} alt="noe" />
         {type === "NORMAL" && (
           <div className="absolute bg-white bottom-0 p-4 left-0 right-0 top-auto rounded-bl-xl rounded-br-xl">
-            <p className="font-sans">300 valoraciones</p>
+            <p className="font-sans">{votes} valoraciones</p>
           </div>
         )}
         {/* <div className="absolute bg-white bottom-0 p-4 left-0 right-0 top-auto">

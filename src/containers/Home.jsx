@@ -7,6 +7,7 @@ import Header from "../components/layout/Header";
 import { ThumbUpIcon, ThumbDownIcon } from "@heroicons/react/solid";
 import Button from "../components/buttons/Button";
 import Footer from "../components/layout/Footer";
+import ActionCardUser from "../components/Cards.jsx/ActionCardUser";
 
 const Home = () => {
   return (
@@ -15,30 +16,14 @@ const Home = () => {
       <div className="max-w-7xl mx-auto mt-14">
         <div className="flex justify-center">
           <div className="flex items-center justify-center flex-col">
-            <h3 className="font-sans font-semibold text-center text-3xl ">
+            <h3 className="font-sans font-semibold text-center text-3xl mb-5">
               ¿Qué piensas de este profesor?
             </h3>
-            <div className="mt-5 w-96 h-96 overflow-hidden shadow-md flex items-center justify-center rounded-xl relative">
-              <img
-                src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                alt="noe"
-              />
-              <div className="absolute bg-white bottom-0 p-4 left-0 right-0 top-auto">
-                <h6 className="font-sans font-semibold text-lg">
-                  Nombre del profesor
-                </h6>
-                <p className="font-sans">Asignatura</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-6 mt-5 w-96">
-              <IconButton>
-                <ThumbUpIcon className="text-white h-6" />
-              </IconButton>
-              <IconButton>
-                <ThumbDownIcon className="text-white h-6" />
-              </IconButton>
-              <Button value="No lo reconozco" full />
-            </div>
+            <ActionCardUser
+              img="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              teacherName="Nombre del Profesor"
+              subject="Asignatura"
+            />
           </div>
         </div>
       </div>
