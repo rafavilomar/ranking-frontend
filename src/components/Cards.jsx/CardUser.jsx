@@ -16,7 +16,7 @@ const CardUser = ({ type = "NORMAL", image, title, content, rate, color }) => {
 
   return (
     <div
-      className={`${className} rounded-xl  mt-5 shadow-md relative flex items-center justify-center`}
+      className={`${className} rounded-xl mt-5 shadow-md relative flex items-center justify-center`}
     >
       <span
         className={`${color} font-sans text-2xl font-semibold absolute flex justify-center items-center -top-5 left-auto right-auto bottom-auto rounded-br-full rounded-bl-full bg-red-400 w-14 h-14`}
@@ -26,7 +26,7 @@ const CardUser = ({ type = "NORMAL", image, title, content, rate, color }) => {
       <div className="overflow-hidden max-h-full rounded-xl max-w-full flex items-center justify-center">
         <img src={image} alt="noe" />
         {type === "NORMAL" && (
-          <div className="absolute bg-white bottom-0 p-4 left-0 right-0 top-auto">
+          <div className="absolute bg-white bottom-0 p-4 left-0 right-0 top-auto rounded-bl-xl rounded-br-xl">
             <p className="font-sans">300 valoraciones</p>
           </div>
         )}

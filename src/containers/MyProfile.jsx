@@ -11,7 +11,7 @@ const MyProfile = () => {
   return (
     <>
       <Header />
-      <div className="max-w-7xl mx-auto mt-5 grid md:grid-cols-3 sm:grid-cols-1 gap-2">
+      <div className="max-w-7xl mx-auto mt-7 grid md:grid-cols-3 sm:grid-cols-1 gap-2 mb-14">
         {/* Image */}
         <div className="flex justify-center">
           <div className="relative h-60 w-60 rounded-lg overflow-hidden flex items-center justify-center">
