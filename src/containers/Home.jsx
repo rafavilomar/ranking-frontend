@@ -6,6 +6,7 @@ import Header from "../components/layout/Header";
 
 import { ThumbUpIcon, ThumbDownIcon } from "@heroicons/react/solid";
 import Button from "../components/buttons/Button";
+import Footer from "../components/layout/Footer";
 
 const Home = () => {
   return (
@@ -65,6 +66,7 @@ const Home = () => {
           image="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
         />
       </div>
+      <Footer/>
     </div>
   );
 };

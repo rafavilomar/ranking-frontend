@@ -5,6 +5,7 @@ import TextInput from "../components/forms/TextInput";
 import Header from "../components/layout/Header";
 
 import { PencilIcon } from "@heroicons/react/solid";
+import Footer from "../components/layout/Footer";
 
 const MyProfile = () => {
   return (
@@ -53,6 +54,7 @@ const MyProfile = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
