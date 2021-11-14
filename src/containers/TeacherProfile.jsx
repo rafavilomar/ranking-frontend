@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ActionCardUser from "../components/Cards.jsx/ActionCardUser";
-import CardUser from "../components/Cards.jsx/CardUser";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 
@@ -49,6 +48,30 @@ const TeacherProfile = () => {
           >
             Más Información
           </button>
+        </div>
+        {/* Tabs content */}
+        <div className="mb-10">
+          {comments && (
+            <div className="flex flex-col gap-2">
+              {[1,2,3,4,5].map((e) => (
+              <div key={e} className="p-2 font-sans">
+                <div className="flex gap-1 items-center">
+                  <h6 className="font-semibold text-base text-gray-800">@username</h6>
+                  <span className="text-gray-600 text-xs">• 06:30 pm</span>
+                </div>
+                <p className="text-gray-800 text-sm">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo
+                  excepturi amet eligendi sequi impedit aliquam quasi illo
+                  vitae. Vel aperiam veniam cum nesciunt explicabo voluptatem
+                  minima iste similique nam laborum.
+                </p>
+              </div>
+              ))}
+            </div>
+          )}
+          {info && (
+            <h3>More Info</h3>
+          )}
         </div>
       </div>
       <Footer />
