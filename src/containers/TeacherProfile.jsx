@@ -3,6 +3,7 @@ import ActionCardUser from "../components/Cards.jsx/ActionCardUser";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 import TeacherService from "../fetcher/services/TeacherService";
+import VoteService from "../fetcher/services/VoteService";
 
 const TeacherProfile = () => {
   const [comments, setComments] = useState(true);
@@ -14,7 +15,10 @@ const TeacherProfile = () => {
   const [postiveVotes, setPositiveVotes] = useState(0);
   const [negativeVotes, setNegativeVotes] = useState(0);
 
+  const [commentList, setCommentList] = useState([]);
+
   let teacherService = new TeacherService();
+  let voteService = new VoteService();
 
   const changeTab = () => {
     setComments(!comments);
@@ -22,20 +26,22 @@ const TeacherProfile = () => {
   };
 
   const getTeacherInfo = async () => {
-
     const response = await teacherService.getTeacherInfo();
     setId(response[0].teacherid);
     setName(response[0].teachername);
     setImg(response[0].img);
     setPositiveVotes(response[0].positivevotes);
     setNegativeVotes(response[0].negativevotes);
-    console.log(id);
-    console.log(name);
+  };
 
-  }
+  const getComments = async () => {
+    const response = await voteService.getCommentByTeacher();
+    setCommentList(response);
+  };
 
   useEffect(async () => {
     await getTeacherInfo();
+    await getComments();
   }, []);
 
   return (
@@ -81,19 +87,16 @@ const TeacherProfile = () => {
         <div className="mb-10">
           {comments && (
             <div className="flex flex-col gap-2">
-              {[1, 2, 3, 4, 5].map((e) => (
-                <div key={e} className="p-2 font-sans">
+              {commentList.map((comment) => (
+                <div key={comment.id} className="p-2 font-sans">
                   <div className="flex gap-1 items-center">
                     <h6 className="font-semibold text-base text-gray-800">
-                      @username
+                      {`@${comment.username}`}
                     </h6>
-                    <span className="text-gray-600 text-xs">• 06:30 pm</span>
+                    <span className="text-gray-600 text-xs">{`• ${comment.timestamp}`}</span>
                   </div>
                   <p className="text-gray-800 text-sm">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Quo excepturi amet eligendi sequi impedit aliquam quasi illo
-                    vitae. Vel aperiam veniam cum nesciunt explicabo voluptatem
-                    minima iste similique nam laborum.
+                    {comment.comment}
                   </p>
                 </div>
               ))}
