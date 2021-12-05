@@ -3,6 +3,7 @@ import React from "react";
 import { ThumbUpIcon, ThumbDownIcon } from "@heroicons/react/solid";
 import Button from "../buttons/Button";
 import IconButton from "../buttons/IconButton";
+import VoteService from "../../fetcher/services/VoteService";
 
 const ActionCardUser = ({
   type = "NORMAL",
@@ -11,8 +12,10 @@ const ActionCardUser = ({
   school,
   img,
   positiveVotes,
-  negativeVotes
+  negativeVotes,
 }) => {
+  let voteService = new VoteService();
+
   return (
     <>
       {type === "FULL" && (
@@ -38,10 +41,16 @@ const ActionCardUser = ({
           </div>
           <div className="flex items-center gap-6 mt-5 w-96">
             <IconButton>
-              <ThumbUpIcon className="text-white h-6" />
+              <ThumbUpIcon
+                className="text-white h-6"
+                onClick={() => voteService.makeVote()}
+              />
             </IconButton>
             <IconButton>
-              <ThumbDownIcon className="text-white h-6" />
+              <ThumbDownIcon
+                className="text-white h-6"
+                onClick={() => voteService.makeVote()}
+              />
             </IconButton>
             <Button value="No lo reconozco" full />
           </div>
