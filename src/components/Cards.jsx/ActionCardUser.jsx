@@ -3,6 +3,7 @@ import React from "react";
 import { ThumbUpIcon, ThumbDownIcon } from "@heroicons/react/solid";
 import Button from "../buttons/Button";
 import IconButton from "../buttons/IconButton";
+import VoteService from "../../fetcher/services/VoteService";
 
 const ActionCardUser = ({
   type = "NORMAL",
@@ -10,7 +11,11 @@ const ActionCardUser = ({
   subject,
   school,
   img,
+  positiveVotes,
+  negativeVotes,
 }) => {
+  let voteService = new VoteService();
+
   return (
     <>
       {type === "FULL" && (
@@ -25,7 +30,7 @@ const ActionCardUser = ({
         <div>
           <div className="w-96 h-96 overflow-hidden shadow-md flex items-center justify-center rounded-xl relative">
             <img src={img} alt="teacherProfile" />
-            {type == "NORMAL" && (
+            {type === "NORMAL" && (
               <div className="absolute bg-white bottom-0 p-4 left-0 right-0 top-auto">
                 <h6 className="font-sans font-semibold text-lg">
                   {teacherName}
@@ -36,10 +41,16 @@ const ActionCardUser = ({
           </div>
           <div className="flex items-center gap-6 mt-5 w-96">
             <IconButton>
-              <ThumbUpIcon className="text-white h-6" />
+              <ThumbUpIcon
+                className="text-white h-6"
+                onClick={() => voteService.makeVote()}
+              />
             </IconButton>
             <IconButton>
-              <ThumbDownIcon className="text-white h-6" />
+              <ThumbDownIcon
+                className="text-white h-6"
+                onClick={() => voteService.makeVote()}
+              />
             </IconButton>
             <Button value="No lo reconozco" full />
           </div>
@@ -48,11 +59,11 @@ const ActionCardUser = ({
           <div className="flex flex-col gap-2">
             <span className="flex gap-2 items-center font-sans">
               <ThumbUpIcon className="text-green-700 h-8" />
-              250 Valoraciones
+              {positiveVotes} Valoraciones
             </span>
             <span className="flex gap-2 items-center font-sans">
               <ThumbDownIcon className="text-red-800 h-8" />
-              50 Valoraciones
+              {negativeVotes} Valoraciones
             </span>
           </div>
         )}

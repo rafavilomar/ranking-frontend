@@ -1,11 +1,8 @@
 import React from "react";
-import IconButton from "../components/buttons/IconButton";
 import CardUser from "../components/Cards.jsx/CardUser";
 
 import Header from "../components/layout/Header";
 
-import { ThumbUpIcon, ThumbDownIcon } from "@heroicons/react/solid";
-import Button from "../components/buttons/Button";
 import Footer from "../components/layout/Footer";
 import ActionCardUser from "../components/Cards.jsx/ActionCardUser";
 
