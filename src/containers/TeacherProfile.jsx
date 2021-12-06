@@ -40,6 +40,7 @@ const TeacherProfile = () => {
   };
 
   useEffect(async () => {
+    console.log(process.env);
     await getTeacherInfo();
     await getComments();
   }, []);

@@ -1,3 +1,4 @@
+import config from "../../config";
 import DataService from "../DataService";
 
 class TeacherService {
@@ -5,10 +6,13 @@ class TeacherService {
   constructor() {
     this.dataService = new DataService();
   }
+  
 
   async getTeacherInfo() {
+    console.log(config);
+    console.log(config.api.domain);
     const response = await this.dataService.get(
-      `http://localhost:3500/teacher/1`
+      `${config.api.domain}/teacher/1`
     );
     return response;
   }
