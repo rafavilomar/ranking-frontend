@@ -10,7 +10,7 @@ import AuthService from "../fetcher/services/AuthService";
 const Login = () => {
 
   let history = useHistory();
-  const {token, setContext} = useContext(GeneralContext)
+  const { token, setContext } = useContext(GeneralContext)
 
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -29,7 +29,7 @@ const Login = () => {
       history.push("/");
     } else {
       setUsername("");
-      setPassword("")
+      setPassword("");
     }
   }
 
@@ -42,9 +42,9 @@ const Login = () => {
       <Branch />
       <div className="mt-2 bg-white shadow-md rounded-md w-80 px-6 py-4 overflow-hidden">
         <form className="gap-4 flex flex-col" onSubmit={login} >
-          <TextInput value={username} name="username" label="Usuario" type="text" required onChange={(e) => setUsername(e.target.value)}/>
-          <TextInput value={password} name="password" label="Contraseña" type="password" required onChange={(e) => setPassword(e.target.value)}/>
-          <Button type="submit" value="Iniciar Sesión" style="primary"/>
+          <TextInput value={username} name="username" label="Usuario" type="text" required onChange={(e) => setUsername(e.target.value)} />
+          <TextInput value={password} name="password" label="Contraseña" type="password" required onChange={(e) => setPassword(e.target.value)} />
+          <Button type="submit" value="Iniciar Sesión" style="primary" />
         </form>
       </div>
       <LinkButton value="Crear cuenta" style="tertiary" href="/signup" />

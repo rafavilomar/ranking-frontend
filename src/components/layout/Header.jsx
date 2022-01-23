@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 
 import { SearchIcon } from "@heroicons/react/solid";
 
 import LinkButton from "../buttons/LinkButton";
 import Branch from "./Branch";
 import { Link } from "react-router-dom";
+import GeneralContext from "../../context/context";
 
 const Header = () => {
+
+  const { token } = useContext(GeneralContext)
+
+
+  useEffect(() => {
+
+  }, [])
+
   return (
     <header className="shadow-md bg-white py-2">
       <div className="container justify-between items-center inline-flex px-4">
@@ -34,17 +43,21 @@ const Header = () => {
             </button>
           </div>
           <div className="flex items-center gap-5">
-            {/*--PROFILE BUTTON--*/}
-            <button className="h-12 w-12 flex items-center justify-center rounded-full overflow-hidden hover:shadow-sm hover:border-gray-300">
-              <img
-                alt="none"
-                className=""
-                src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-              />
-            </button>
-            {/*--ACTION BUTTONS--*/}
-            <LinkButton value="Sign up" href="/signup" />
-            <LinkButton value="Login" style="primary" href="/login" />
+            {token ? (
+              // PROFILE BUTTON
+              <button className="h-12 w-12 flex items-center justify-center rounded-full overflow-hidden hover:shadow-sm hover:border-gray-300">
+                <img
+                  alt="none"
+                  className=""
+                  src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                />
+              </button>
+              // ACTION BUTTONS
+            ) : (<>
+              <LinkButton value="Sign up" href="/signup" />
+              <LinkButton value="Login" style="primary" href="/login" />
+            </>)}
+
           </div>
         </div>
       </div>
