@@ -7,6 +7,7 @@ import Footer from "../components/layout/Footer";
 import ActionCardUser from "../components/Cards.jsx/ActionCardUser";
 
 const Home = () => {
+  
   return (
     <div>
       <Header />

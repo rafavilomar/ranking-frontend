@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../components/buttons/Button";
 import LinkButton from "../components/buttons/LinkButton";
 import TextInput from "../components/forms/TextInput";
 import Branch from "../components/layout/Branch";
+import GeneralContext from "../context/context";
 import AuthService from "../fetcher/services/AuthService";
 
 const Login = () => {
+
   let history = useHistory();
+  const {token, setContext} = useContext(GeneralContext)
+
   const [username, setUsername] = React.useState();
   const [password, setPassword] = React.useState();
 
@@ -19,7 +23,10 @@ const Login = () => {
       password: password
     }
     const response = await service.login(data);
-    response && history.push("/")
+    if (response) {
+      setContext(response);
+      history.push("/");
+    }
   }
 
   return (
