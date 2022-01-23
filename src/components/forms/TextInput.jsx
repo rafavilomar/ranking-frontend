@@ -1,6 +1,6 @@
 import React from "react";
 
-const TextInput = ({ name, label, type = "text", required = false, disabled = false, onChange}) => {
+const TextInput = ({ value, name, label, type = "text", required = false, disabled = false, onChange}) => {
   return (
     <div className="w-full">
       <label className="font-sans font-medium text-gray-600" htmlFor={name}>{label}</label>
@@ -13,6 +13,7 @@ const TextInput = ({ name, label, type = "text", required = false, disabled = fa
           disabled={disabled}
           required={required}
           onChange={onChange}
+          value={value}
         />
       </div>
     </div>
