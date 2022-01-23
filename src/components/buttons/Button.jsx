@@ -11,7 +11,7 @@ const Button = ({ value, funtion, type = "button", style = "normal", full = fals
     } else {
       setClassName(" text-gray-700")
     }
-  }, []);
+  }, [style]);
 
   return (
     <button type={type} onClick={funtion} className={`py-2 px-4 rounded-md ${className} ${full && "w-full"}`}>

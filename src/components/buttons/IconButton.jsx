@@ -11,7 +11,7 @@ const IconButton = ({ children, funtion, type = "button", style = "normal" }) =>
     } else {
       setClassName(" text-gray-700")
     }
-  }, []);
+  }, [className, style]);
 
   return (
     <button type={type} onClick={funtion} className="right-2 bottom-2 z-10 bg-gray-600 p-2 rounded-md">

@@ -9,12 +9,7 @@ import GeneralContext from "../../context/context";
 
 const Header = () => {
 
-  const { token } = useContext(GeneralContext)
-
-
-  useEffect(() => {
-
-  }, [])
+  const { token } = useContext(GeneralContext);
 
   return (
     <header className="shadow-md bg-white py-2">
