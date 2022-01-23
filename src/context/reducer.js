@@ -1,6 +1,6 @@
 import { SET_CONTEXT } from "./types";
 
-export default (state, action) => {
+const GeneralReducer = (state, action) => {
     const { payload, type } = action;
 
     switch (type) {
@@ -13,7 +13,9 @@ export default (state, action) => {
             }
 
         default:
-            console.log("NOTHING");
-            break;
+            return{
+                ...state
+            }
     }
 }
+export default GeneralReducer;

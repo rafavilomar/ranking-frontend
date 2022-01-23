@@ -10,7 +10,7 @@ import AuthService from "../fetcher/services/AuthService";
 const Login = () => {
 
   let history = useHistory();
-  const { setContext } = useContext(GeneralContext);
+  const { token, setContext } = useContext(GeneralContext);
 
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -34,8 +34,8 @@ const Login = () => {
   }
 
   useEffect(() => {
-
-  }, [username, password])
+    token && history.push("/")
+  }, [])
 
   return (
     <div className="flex flex-col gap-2 justify-center items-center absolute top-0 left-0 right-0 bottom-0">

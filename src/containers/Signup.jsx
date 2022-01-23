@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../components/buttons/Button";
 import LinkButton from "../components/buttons/LinkButton";
@@ -14,7 +14,7 @@ const Signup = () => {
   const [passwordRepeat, setPasswordRepeat] = useState("");
 
   const service = new AuthService();
-  const { setContext } = useContext(GeneralContext);
+  const { token, setContext } = useContext(GeneralContext);
   let history = useHistory();
 
   const clearForm = () => {
@@ -27,7 +27,7 @@ const Signup = () => {
   const register = async (event) => {
     event.preventDefault();
 
-    if (password == passwordRepeat) {
+    if (password === passwordRepeat) {
       const registerData = {
         username: username,
         password: password,
@@ -50,6 +50,10 @@ const Signup = () => {
     }
 
   }
+
+  useEffect(() => {
+    token && history.push("/")
+  }, [])
 
   return (
     <div className="flex flex-col gap-2 justify-center items-center absolute top-0 left-0 right-0 bottom-0">
