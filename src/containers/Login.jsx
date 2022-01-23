@@ -10,7 +10,7 @@ import AuthService from "../fetcher/services/AuthService";
 const Login = () => {
 
   let history = useHistory();
-  const { token, setContext } = useContext(GeneralContext)
+  const { setContext } = useContext(GeneralContext);
 
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");

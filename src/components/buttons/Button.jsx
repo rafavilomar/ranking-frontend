@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ value, funtion, type = "button", style = "normal", full = false }) => {
+const Button = ({ value, funtion, type = "button", style = "normal", full = false}) => {
   const [className, setClassName] = React.useState("");
 
   React.useEffect(() => {
