@@ -15,7 +15,7 @@ const Login = () => {
 
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [error, setError] = React.useState(true)
+  const [error, setError] = React.useState(false)
 
   const service = new AuthService();
 
@@ -30,30 +30,40 @@ const Login = () => {
       setContext(response);
       history.push("/");
     } else {
-      setError(!error)
+      showError();
       setUsername("");
       setPassword("");
     }
+  }
+
+  const showError = () => {
+    setError(true)
+    setTimeout(() => {
+      setError(false)
+    }, 5000);
   }
 
   useEffect(() => {
     token && history.push("/")
   }, [])
 
+
   return (
     <div className="flex flex-col gap-2 justify-center items-center absolute top-0 left-0 right-0 bottom-0">
       <Branch />
-      {error && (
-        <Alert title="Error al intentar iniciar sesión" error>
-          <p>Usuario o Contraseña incorrecta</p>
-        </Alert>
-      )}
-      <div className="mt-2 bg-white shadow-md rounded-md w-80 px-6 py-4 overflow-hidden">
-        <form className="gap-4 flex flex-col" onSubmit={login} >
-          <TextInput value={username} name="username" label="Usuario" type="text" required onChange={(e) => setUsername(e.target.value)} />
-          <TextInput value={password} name="password" label="Contraseña" type="password" required onChange={(e) => setPassword(e.target.value)} />
-          <Button type="submit" value="Iniciar Sesión" style="primary" />
-        </form>
+      <div className="w-80 flex flex-col gap-2">
+        {error && (
+          <Alert title="Error al intentar iniciar sesión" error >
+            <p> <b>Usuario</b> o <b>contraseña</b> incorrectos. Por favor vuelva a intentarlo.</p>
+          </Alert>
+        )}
+        <div className="mt-2 bg-white shadow-md rounded-md px-6 py-4 overflow-hidden">
+          <form className="gap-4 flex flex-col" onSubmit={login} >
+            <TextInput value={username} name="username" label="Usuario" type="text" required onChange={(e) => setUsername(e.target.value)} />
+            <TextInput value={password} name="password" label="Contraseña" type="password" required onChange={(e) => setPassword(e.target.value)} />
+            <Button type="submit" value="Iniciar Sesión" style="primary" />
+          </form>
+        </div>
       </div>
       <LinkButton value="Crear cuenta" style="tertiary" href="/signup" />
     </div>
