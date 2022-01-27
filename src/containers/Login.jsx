@@ -16,11 +16,13 @@ const Login = () => {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   const service = new AuthService();
 
   const login = async (event) => {
     event.preventDefault();
+    setLoading(true);
     const data = {
       username: username,
       password: password
@@ -29,8 +31,10 @@ const Login = () => {
     if (response) {
       setContext(response);
       history.push("/");
+      setLoading(false);
     } else {
       showError();
+      setLoading(false);
       setUsername("");
       setPassword("");
     }
@@ -61,7 +65,7 @@ const Login = () => {
           <form className="gap-4 flex flex-col" onSubmit={login} >
             <TextInput value={username} name="username" label="Usuario" type="text" required onChange={(e) => setUsername(e.target.value)} />
             <TextInput value={password} name="password" label="Contraseña" type="password" required onChange={(e) => setPassword(e.target.value)} />
-            <Button type="submit" value="Iniciar Sesión" style="primary" />
+            <Button loading={loading} type="submit" value="Iniciar Sesión" style="primary" />
           </form>
         </div>
       </div>

@@ -14,6 +14,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const [error, setError] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   const service = new AuthService();
   const { token, setContext } = useContext(GeneralContext);
@@ -28,6 +29,7 @@ const Signup = () => {
 
   const register = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
     if (password === passwordRepeat) {
       const registerData = {
@@ -46,8 +48,10 @@ const Signup = () => {
       if (response) {
         setContext(response);
         history.push("/");
+        setLoading(false);
       } else {
         showError();
+        setLoading(false);
         clearForm();
       }
     }
@@ -85,7 +89,7 @@ const Signup = () => {
               label="Repetir Contraseña"
               type="password"
             />
-            <Button type="submit" value="Crear cuenta" style="primary" />
+            <Button loading={loading} type="submit" value="Crear cuenta" style="primary" />
           </form>
         </div>
       </div>
