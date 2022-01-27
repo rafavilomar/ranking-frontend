@@ -15,7 +15,12 @@ const Button = ({ value, funtion, type = "button", loading = false, style = "nor
   }, [style]);
 
   return (
-    <button type={type} onClick={funtion} className={`flex justify-center py-2 px-4 rounded-md text-lg font-semibold ${className} ${full && "w-full"}`}>
+    <button
+      disabled={loading}
+      type={type}
+      onClick={funtion}
+      className={`flex justify-center py-2 px-4 rounded-md text-lg font-semibold ${className} ${full && "w-full"} ${loading && "cursor-not-allowed"}`}
+    >
       {loading ? (
         <div className="w-6 h-6">
           <LoadingSpinner colorClass="border-white-700" />
