@@ -10,7 +10,7 @@ import { PencilIcon } from "@heroicons/react/solid";
 import Footer from "../components/layout/Footer";
 import UserService from "../fetcher/services/UserService";
 import GeneralContext from "../context/context";
-import { ThumbsDown, ThumbsUp } from "react-ionicons";
+import { ThumbUpIcon, ThumbDownIcon } from "@heroicons/react/solid";
 
 const MyProfile = () => {
 
@@ -137,7 +137,7 @@ const MyProfile = () => {
               {votes.map((vote) => (
                 <div key={vote.id} className="flex gap-5 rounded-sm p-2">
                   <div className="py-1">
-                    {vote.vote ? (<ThumbsUp />) : (<ThumbsDown />)}
+                    {vote.vote ? (<ThumbUpIcon className="h-7" />) : (<ThumbDownIcon className="h-7" />)}
                   </div>
                   <div className="flex flex-col gap-2">
                     <div>
