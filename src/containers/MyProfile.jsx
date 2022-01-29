@@ -42,29 +42,29 @@ const MyProfile = () => {
         <div className="col-span-2 bg-white h-auto overflow-hidden box-border rounded-md">
           <div className="p-5">
             <section className="flex flex-col gap-4">
-              <h3 className="font-sans font-semibold text-xl">
-                Información básica
-              </h3>
-              <hr />
+              <div className="flex flex-col gap-2">
+                <h3 className="font-sans font-semibold text-xl">
+                  Información básica
+                </h3>
+                <hr />
+              </div>
               <TextInput label="Usuario" name="username" />
               <TextInput label="Correo electrónico" name="email" type="email" />
+              <div>
+                <Button value="Actualizar perfil" />
+              </div>
             </section>
             <section className="mt-8 flex flex-col gap-4">
-              <h3 className="font-sans font-semibold text-xl">Contraseña</h3>
-              <p className="font-sans text-base">
-                Introduce y valida una nueva contraseña para poder acceder a tu
-                cuenta. Asegurate de no olvidarla esta vez :)
-              </p>
-              <hr />
+              <div className="flex flex-col gap-2">
+                <h3 className="font-sans font-semibold text-xl">Contraseña</h3>
+                <hr />
+              </div>
               <TextInput label="Nueva contraseña" />
               <TextInput label="Repetir contraseña" disabled />
               <div>
                 <Button value="Cambiar contraseña" />
               </div>
             </section>
-          </div>
-          <div className="flex justify-end bg-gray-200 p-5">
-            <Button value="Actualizar perfil" style="primary" />
           </div>
         </div>
       </div>
