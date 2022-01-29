@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 import { SearchIcon } from "@heroicons/react/solid";
 
@@ -42,14 +42,12 @@ const Header = () => {
           <div className="flex items-center gap-5">
             {token ? (
               // PROFILE BUTTON
-              <button className="h-12 w-12 flex items-center justify-center rounded-full overflow-hidden hover:shadow-sm hover:border-gray-300">
+              <Link to="/my-profile" className="h-12 w-12 flex items-center justify-center rounded-full overflow-hidden hover:shadow-sm hover:border-gray-300" >
                 <img
-                  alt="none"
-                  className=""
+                  alt="profile picture"
                   src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                 />
-              </button>
-              // ACTION BUTTONS
+              </Link>
             ) : (<>
               <LinkButton value="Sign up" href="/signup" />
               <LinkButton value="Login" style="primary" href="/login" />

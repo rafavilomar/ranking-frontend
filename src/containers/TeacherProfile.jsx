@@ -6,7 +6,6 @@ import ActionCardUser from "../components/Cards.jsx/ActionCardUser";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 import TeacherService from "../fetcher/services/TeacherService";
-import VoteService from "../fetcher/services/VoteService";
 
 const TeacherProfile = () => {
   const [comments, setComments] = useState(true);
@@ -19,9 +18,6 @@ const TeacherProfile = () => {
 
   const [commentList, setCommentList] = useState([]);
 
-  // let teacherService = new TeacherService();
-  // let voteService = new VoteService();
-
   const changeTab = () => {
     setComments(!comments);
     setInfo(!info);
@@ -30,7 +26,6 @@ const TeacherProfile = () => {
   const getTeacherInfo = async () => {
     const response = await TeacherService.getTeacherInfo();
     console.log(response);
-    // setId(response.id);
     setName(response.fullname);
     setImg(response.img);
     setPositiveVotes(response.positiveVotes);
@@ -38,14 +33,8 @@ const TeacherProfile = () => {
     setCommentList(response.votes);
   };
 
-  const getComments = async () => {
-    const response = await VoteService.getCommentByTeacher();
-    setCommentList(response);
-  };
-
   useEffect(async () => {
     await getTeacherInfo();
-    // await getComments();
   }, []);
 
   return (
@@ -91,7 +80,7 @@ const TeacherProfile = () => {
             <div className="flex flex-col gap-2">
               {commentList.map((comment) => (
                 <div className="flex gap-4 p-2" >
-                  <div style={{maxHeight: 70, maxWidth: 70}} className="flex items-center justify-center rounded-full overflow-hidden">
+                  <div style={{ maxHeight: 70, maxWidth: 70 }} className="flex items-center justify-center rounded-full overflow-hidden">
                     <img
                       alt="profile picture"
                       src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
