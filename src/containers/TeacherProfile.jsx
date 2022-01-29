@@ -17,8 +17,8 @@ const TeacherProfile = () => {
 
   const [commentList, setCommentList] = useState([]);
 
-  let teacherService = new TeacherService();
-  let voteService = new VoteService();
+  // let teacherService = new TeacherService();
+  // let voteService = new VoteService();
 
   const changeTab = () => {
     setComments(!comments);
@@ -26,7 +26,7 @@ const TeacherProfile = () => {
   };
 
   const getTeacherInfo = async () => {
-    const response = await teacherService.getTeacherInfo();
+    const response = await TeacherService.getTeacherInfo();
     setId(response[0].teacherid);
     setName(response[0].teachername);
     setImg(response[0].img);
@@ -35,14 +35,13 @@ const TeacherProfile = () => {
   };
 
   const getComments = async () => {
-    const response = await voteService.getCommentByTeacher();
+    const response = await VoteService.getCommentByTeacher();
     setCommentList(response);
   };
 
   useEffect(async () => {
-    console.log(process.env);
-    await getTeacherInfo();
-    await getComments();
+    // await getTeacherInfo();
+    // await getComments();
   }, []);
 
   return (
