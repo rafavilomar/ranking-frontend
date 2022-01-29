@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
+import Moment from "react-moment";
+import "moment/locale/es"
 
 import Button from "../components/buttons/Button";
 import TextInput from "../components/forms/TextInput";
@@ -96,6 +98,7 @@ const MyProfile = () => {
         </div>
         {/* Info */}
         <div className="col-span-2 bg-white h-auto overflow-hidden box-border rounded-md p-5" style={{ height: "fit-content" }} >
+          {/* Account */}
           {account && (<>
             <section className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
@@ -105,7 +108,7 @@ const MyProfile = () => {
                 <hr />
               </div>
               <TextInput label="Usuario" name="username" value={username} />
-              <TextInput label="Correo electrónico" name="email" type="email" />
+              <TextInput label="Correo electrónico" name="email" type="email" value={email} />
               <div>
                 <Button value="Actualizar perfil" />
               </div>
@@ -122,6 +125,7 @@ const MyProfile = () => {
               </div>
             </section>
           </>)}
+          {/* Activities */}
           {activities && (
             <section className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
@@ -131,12 +135,17 @@ const MyProfile = () => {
                 <hr />
               </div>
               {votes.map((vote) => (
-                <div className="flex gap-5 rounded-sm p-2">
+                <div key={vote.id} className="flex gap-5 rounded-sm p-2">
                   <div className="py-1">
                     {vote.vote ? (<ThumbsUp />) : (<ThumbsDown />)}
                   </div>
                   <div className="flex flex-col gap-2">
-                    <div><span className="font-medium">Para:</span> <span className="text-gray-600">Pedro Martinez</span> • <span className="font-medium">Fecha:</span> <span className="text-gray-600">6:39pm</span></div>
+                    <div>
+                      <span className="font-medium">Para:</span>
+                      <span className="text-gray-600">{` ${vote.teacherName}`}</span>
+                      <span> • </span>
+                      <span className="font-medium">Fecha:</span>
+                      <span className="text-gray-600"> <Moment locale="es" fromNow date={vote.timestamp} /></span></div>
                     {vote.comment && (
                       <p>{vote.comment}</p>
                     )}
