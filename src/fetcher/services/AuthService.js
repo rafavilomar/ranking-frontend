@@ -2,20 +2,16 @@ import config from "../../config";
 import DataService from "../DataService";
 
 class AuthService {
-    dataService;
-    constructor() {
-        this.dataService = new DataService();
-    }
 
-    async login(data) {
-        const response = await this.dataService.post(
+    static async login(data) {
+        const response = await DataService.post(
             `${config.api.domain}/login`, data
         );
         return response;
     }
 
-    async register(data) {
-        const response = await this.dataService.post(
+    static async register(data) {
+        const response = await DataService.post(
             `${config.api.domain}/register`, data
         );
         return response;

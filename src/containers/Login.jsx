@@ -18,8 +18,6 @@ const Login = () => {
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
-  const service = new AuthService();
-
   const login = async (event) => {
     event.preventDefault();
     setLoading(true);
@@ -27,7 +25,7 @@ const Login = () => {
       username: username,
       password: password
     }
-    const response = await service.login(data);
+    const response = await AuthService.login(data);
     if (response) {
       setContext(response);
       history.push("/");

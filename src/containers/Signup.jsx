@@ -16,7 +16,6 @@ const Signup = () => {
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
-  const service = new AuthService();
   const { token, setContext } = useContext(GeneralContext);
   let history = useHistory();
 
@@ -42,8 +41,8 @@ const Signup = () => {
         password: password
       }
 
-      await service.register(registerData)
-      const response = await service.login(loginData)
+      await AuthService.register(registerData)
+      const response = await AuthService.login(loginData)
 
       if (response) {
         setContext(response);

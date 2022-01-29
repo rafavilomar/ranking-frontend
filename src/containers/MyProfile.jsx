@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 
 import Button from "../components/buttons/Button";
 import TextInput from "../components/forms/TextInput";
@@ -6,8 +6,22 @@ import Header from "../components/layout/Header";
 
 import { PencilIcon } from "@heroicons/react/solid";
 import Footer from "../components/layout/Footer";
+import UserService from "../fetcher/services/UserService";
+import GeneralContext from "../context/context";
 
 const MyProfile = () => {
+
+  const { id } = useContext(GeneralContext);
+
+  const loadUserInfo = async () => {
+    const response = await UserService.getUserInfo(id);
+    console.log(response);
+  }
+
+  useEffect(() => {
+    loadUserInfo();
+  }, [])
+
   return (
     <>
       <Header />
@@ -54,7 +68,7 @@ const MyProfile = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
