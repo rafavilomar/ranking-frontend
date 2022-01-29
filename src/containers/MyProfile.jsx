@@ -60,7 +60,7 @@ const MyProfile = () => {
           <div className="flex flex-col gap-2 bg-white p-2 rounded-md content-start" style={{ height: "fit-content" }} >
             <div className="relative h-60 w-60 rounded-lg overflow-hidden flex items-center justify-center">
               <img
-                alt="none"
+                alt="profile picture"
                 src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
               />
               <button className="absolute right-2 bottom-2 z-10 bg-gray-600 p-2 rounded-md ">
@@ -147,7 +147,7 @@ const MyProfile = () => {
                       <span className="font-medium">Fecha:</span>
                       <span className="text-gray-600"> <Moment locale="es" fromNow date={vote.timestamp} /></span></div>
                     {vote.comment && (
-                      <p>{vote.comment}</p>
+                      <p className="text-sm">{vote.comment}</p>
                     )}
                   </div>
                 </div>
