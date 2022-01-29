@@ -8,15 +8,16 @@ import { PencilIcon } from "@heroicons/react/solid";
 import Footer from "../components/layout/Footer";
 import UserService from "../fetcher/services/UserService";
 import GeneralContext from "../context/context";
+import { ThumbsUp } from "react-ionicons";
 
 const MyProfile = () => {
 
   const { id } = useContext(GeneralContext);
-  
+
   const [account, setAccount] = useState(true);
   const [activities, setActivities] = useState(false);
   const [logout, setLogout] = useState(false);
-  
+
   const changeTab = (tab) => {
     setAccount(false);
     setActivities(false);
@@ -47,7 +48,7 @@ const MyProfile = () => {
       <div className="max-w-7xl mx-auto mt-7 grid md:grid-cols-3 sm:grid-cols-1 gap-2 mb-14">
         {/* Image */}
         <div className="flex justify-center">
-          <div className="flex flex-col gap-2 bg-white p-2 rounded-md content-start" style={{height: "fit-content"}} >
+          <div className="flex flex-col gap-2 bg-white p-2 rounded-md content-start" style={{ height: "fit-content" }} >
             <div className="relative h-60 w-60 rounded-lg overflow-hidden flex items-center justify-center">
               <img
                 alt="none"
@@ -87,8 +88,8 @@ const MyProfile = () => {
           </div>
         </div>
         {/* Info */}
-        <div className="col-span-2 bg-white h-auto overflow-hidden box-border rounded-md">
-          <div className="p-5">
+        <div className="col-span-2 bg-white h-auto overflow-hidden box-border rounded-md p-5" style={{ height: "fit-content" }} >
+          {account && (<>
             <section className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
                 <h3 className="font-sans font-semibold text-xl">
@@ -113,7 +114,24 @@ const MyProfile = () => {
                 <Button value="Cambiar contraseña" />
               </div>
             </section>
-          </div>
+          </>)}
+          {activities && (
+            <section className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2">
+                <h3 className="font-sans font-semibold text-xl">
+                  Historial de actividades
+                </h3>
+                <hr />
+              </div>
+              <div className="flex gap-5 rounded-sm p-2">
+                <div className="py-1"><ThumbsUp /></div>
+                <div className="flex flex-col gap-2">
+                  <div><span className="font-medium">Para:</span> <span className="text-gray-600">Pedro Martinez</span> • <span className="font-medium">Fecha:</span> <span className="text-gray-600">6:39pm</span></div>
+                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo excepturi amet eligendi sequi impedit aliquam quasi illo vitae. Vel aperiam veniam cum nesciunt explicabo voluptatem minima iste similique nam laborum.</p>
+                </div>
+              </div>
+            </section>
+          )}
         </div>
       </div>
       <Footer />
