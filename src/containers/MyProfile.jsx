@@ -8,15 +8,20 @@ import { PencilIcon } from "@heroicons/react/solid";
 import Footer from "../components/layout/Footer";
 import UserService from "../fetcher/services/UserService";
 import GeneralContext from "../context/context";
-import { ThumbsUp } from "react-ionicons";
+import { ThumbsDown, ThumbsUp } from "react-ionicons";
 
 const MyProfile = () => {
 
-  const { id } = useContext(GeneralContext);
+  const { id, username } = useContext(GeneralContext);
 
+  //TABS
   const [account, setAccount] = useState(true);
   const [activities, setActivities] = useState(false);
   const [logout, setLogout] = useState(false);
+
+  //USER INFO
+  const [email, setEmail] = useState();
+  const [votes, setVotes] = useState([]);
 
   const changeTab = (tab) => {
     setAccount(false);
@@ -35,6 +40,8 @@ const MyProfile = () => {
 
   const loadUserInfo = async () => {
     const response = await UserService.getUserInfo(id);
+    setEmail(response.email);
+    setVotes(response.votes);
     console.log(response);
   }
 
@@ -97,7 +104,7 @@ const MyProfile = () => {
                 </h3>
                 <hr />
               </div>
-              <TextInput label="Usuario" name="username" />
+              <TextInput label="Usuario" name="username" value={username} />
               <TextInput label="Correo electrónico" name="email" type="email" />
               <div>
                 <Button value="Actualizar perfil" />
@@ -123,13 +130,19 @@ const MyProfile = () => {
                 </h3>
                 <hr />
               </div>
-              <div className="flex gap-5 rounded-sm p-2">
-                <div className="py-1"><ThumbsUp /></div>
-                <div className="flex flex-col gap-2">
-                  <div><span className="font-medium">Para:</span> <span className="text-gray-600">Pedro Martinez</span> • <span className="font-medium">Fecha:</span> <span className="text-gray-600">6:39pm</span></div>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo excepturi amet eligendi sequi impedit aliquam quasi illo vitae. Vel aperiam veniam cum nesciunt explicabo voluptatem minima iste similique nam laborum.</p>
+              {votes.map((vote) => (
+                <div className="flex gap-5 rounded-sm p-2">
+                  <div className="py-1">
+                    {vote.vote ? (<ThumbsUp />) : (<ThumbsDown />)}
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <div><span className="font-medium">Para:</span> <span className="text-gray-600">Pedro Martinez</span> • <span className="font-medium">Fecha:</span> <span className="text-gray-600">6:39pm</span></div>
+                    {vote.comment && (
+                      <p>{vote.comment}</p>
+                    )}
+                  </div>
                 </div>
-              </div>
+              ))}
             </section>
           )}
         </div>
