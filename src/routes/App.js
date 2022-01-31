@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 
 // CONTAINERS
 import Login from "../containers/Login";
@@ -8,16 +8,17 @@ import Home from "../containers/Home";
 import MyProfile from "../containers/MyProfile";
 import TeacherProfile from "../containers/TeacherProfile";
 import TeacherList from "../containers/TeacherList";
+import ProtectedRoute from "../components/layout/ProtectedRoute";
 
 const App = () => {
   return (
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={Signup} />
-      <Route exact path="/my-profile" component={MyProfile} />
-      <Route exact path="/teacher" component={TeacherProfile} />
-      <Route exact path="/search" component={TeacherList} />
+      <ProtectedRoute requireLogin={false} exact path="/" component={Home} />
+      <ProtectedRoute requireLogin={false} exact path="/login" component={Login} />
+      <ProtectedRoute requireLogin={false} exact path="/signup" component={Signup} />
+      <ProtectedRoute exact path="/my-profile" component={MyProfile} />
+      <ProtectedRoute exact path="/teacher" component={TeacherProfile} />
+      <ProtectedRoute exact path="/search" component={TeacherList} />
     </Switch>
   );
 }
