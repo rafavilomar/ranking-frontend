@@ -2,7 +2,7 @@ import React from "react"
 
 const CardTeacher = ({ teacher }) => {
     return (
-        <div className="flex gap-1 p-2 rounded-sm shadow-sm bg-white">
+        <div className="flex gap-3 p-2 rounded-md cursor-pointer shadow-sm bg-white">
             {/* IMAGE */}
             <div style={{ maxHeight: 70, maxWidth: 70 }} className="flex items-center justify-center rounded-full overflow-hidden">
                 <img
@@ -11,20 +11,20 @@ const CardTeacher = ({ teacher }) => {
                 />
             </div>
             {/* INFO */}
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-1 w-full">
                 {/* HEAD */}
-                <div>
-                    <h6>Pedro Martinez</h6>
-                    <p>Institución</p>
+                <div >
+                    <h6 className="font-semibold" >Pedro Martinez</h6>
+                    <p className="text-gray-600">Institución</p>
                 </div>
                 <hr />
                 {/* SUBJECT */}
                 <div>
-                    <ul>
-                        <li>Asignatura #1</li>
-                        <li>Asignatura #2</li>
-                        <li>Asignatura #3</li>
-                    </ul>
+                    <ol>
+                        <li className="text-gray-600">• Asignatura #1</li>
+                        <li className="text-gray-600">• Asignatura #2</li>
+                        <li className="text-gray-600">• Asignatura #3</li>
+                    </ol>
                 </div>
             </div>
         </div>

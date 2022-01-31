@@ -9,11 +9,13 @@ const TeacherList = () => {
     return (
         <>
             <Header />
-            <div>
-                <h3>Resultados encontrados</h3>
-                {teacherList.map(e => (
-                    <CardTeacher />
-                ))}
+            <div className="max-w-7xl mx-auto flex flex-col gap-5 mt-6">
+                <h3 className="text-xl font-semibold ">Resultados encontrados</h3>
+                <div className="gap-6 grid grid-cols-4">
+                    {teacherList.map(e => (
+                        <CardTeacher />
+                    ))}
+                </div>
             </div>
         </>
     )
