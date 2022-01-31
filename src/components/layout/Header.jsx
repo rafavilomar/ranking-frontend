@@ -12,8 +12,8 @@ const Header = () => {
   const { token } = useContext(GeneralContext);
 
   return (
-    <header className="shadow-md bg-white py-2">
-      <div className="container justify-between items-center inline-flex px-4">
+    <header className="shadow-md bg-white py-2 w-full">
+      <div className="w-full justify-between items-center inline-flex px-4">
         {/*---BRAND NAME---*/}
         <div>
           <Link to="/">
