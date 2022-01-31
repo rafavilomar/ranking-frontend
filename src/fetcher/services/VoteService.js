@@ -2,21 +2,17 @@ import config from "../../config";
 import DataService from "../DataService";
 
 class VoteService {
-  dataService;
-  constructor() {
-    this.dataService = new DataService();
-  }
 
-  async getCommentByTeacher() {
-    const response = await this.dataService.get(
+  static async getCommentByTeacher() {
+    const response = await DataService.get(
       `${config.api.domain}/vote/byTeacher/1`,
       { headers: { "Content-Type": "application/json" } }
     );
     return response;
   }
 
-  async makeVote() {
-    const response = await this.dataService.post(`http://localhost:3500/vote`);
+  static async makeVote() {
+    const response = await DataService.post(`http://localhost:3500/vote`);
     return response;
   }
 }

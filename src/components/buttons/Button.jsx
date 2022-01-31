@@ -1,6 +1,7 @@
 import React from "react";
+import LoadingSpinner from "../feedback/LoadingSpinner";
 
-const Button = ({ value, funtion, type = "button", style = "normal", full = false}) => {
+const Button = ({ value, funtion, type = "button", loading = false, style = "normal", full = false }) => {
   const [className, setClassName] = React.useState("");
 
   React.useEffect(() => {
@@ -14,8 +15,19 @@ const Button = ({ value, funtion, type = "button", style = "normal", full = fals
   }, [style]);
 
   return (
-    <button type={type} onClick={funtion} className={`py-2 px-4 rounded-md ${className} ${full && "w-full"}`}>
-      {value ? value : "Button"}
+    <button
+      disabled={loading}
+      type={type}
+      onClick={funtion}
+      className={`flex justify-center py-2 px-4 rounded-md text-lg font-semibold ${className} ${full && "w-full"} ${loading && "cursor-not-allowed"}`}
+    >
+      {loading ? (
+        <div className="w-6 h-6">
+          <LoadingSpinner colorClass="border-white-700" />
+        </div>
+      ) : (
+        value ? value : "Button"
+      )}
     </button>
   );
 };
