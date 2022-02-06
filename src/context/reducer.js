@@ -1,4 +1,4 @@
-import { SET_CONTEXT } from "./types";
+import { SET_CONTEXT, SET_SEARCH_TEACHER } from "./types";
 
 const GeneralReducer = (state, action) => {
     const { payload, type } = action;
@@ -12,8 +12,14 @@ const GeneralReducer = (state, action) => {
                 img: payload.img
             }
 
+        case SET_SEARCH_TEACHER:
+            return {
+                ...state,
+                searchTeacher: payload
+            }
+
         default:
-            return{
+            return {
                 ...state
             }
     }

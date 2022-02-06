@@ -33,8 +33,8 @@ const TeacherProfile = ({ match }) => {
     setCommentList(response.votes);
   };
 
-  useEffect(async () => {
-    await getTeacherInfo();
+  useEffect(() => {
+    getTeacherInfo();
   }, []);
 
   return (
@@ -82,7 +82,7 @@ const TeacherProfile = ({ match }) => {
                 <div className="flex gap-4 p-2" >
                   <div style={{ maxHeight: 70, maxWidth: 70 }} className="flex items-center justify-center rounded-full overflow-hidden">
                     <img
-                      alt="profile picture"
+                      alt="profile"
                       src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                     />
                   </div>

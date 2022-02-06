@@ -8,16 +8,15 @@ const TeacherList = ({ match }) => {
 
     const [teacherList, setTeacherList] = useState([]);
     const [searchResult, setSearchResult] = useState([]);
+    const teacherName = match.params.teacherName;
 
     const searchTeacher = async () => {
-        const teacherName = match.params.teacherName;
         const response = await TeacherService.searchTeacher(teacherName);
         response && setSearchResult(response);
     }
 
     const getAllTeachers = async () => {
         const response = await TeacherService.getAllTeachers();
-        console.log(response);
         response && setTeacherList(response);
     }
 
@@ -42,7 +41,7 @@ const TeacherList = ({ match }) => {
                 ) : (
                     <div className="flex flex-col items-center gap-2">
                         <DocumentSearchIcon className=" text-gray-400 h-10" />
-                        <h3 className="text-lg text-gray-500" >No se han encontrado resultados para: "{match.params.teacherName}"</h3>
+                        <h3 className="text-lg text-gray-500" >No se han encontrado resultados para: "{teacherName}"</h3>
                     </div>
                 )}
                 <hr />
