@@ -23,19 +23,17 @@ const Header = () => {
         <div className="gap-5 w-full flex justify-end lg:48">
           {token && (
             // SEARCH BOX
-            <div className="max-w-md border-gray-400 w-full flex overflow-hidden rounded-md border">
-              <div className="w-full h-full">
-                <input
-                  className="w-full h-full border-none focus:shadow-none focus:outline-none px-4"
-                  type="text"
-                  name="search"
-                  id="search"
-                  placeholder="Buscar Profesor"
-                  value={searchTeacher}
-                  onChange={(e) => setSearchTeacher(e.target.value)}
-                />
-              </div>
-              <Link to={`/search/${searchTeacher}`} className="flex items-center justify-center px-4 py-2 hover:bg-gray-200">
+            <div className="max-w-md w-full flex overflow-hidden rounded-md ">
+              <input
+                className="w-full h-full bg-gray-200 px-4 border-2 rounded-l-md hover:border-gray-400 focus:shadow-none focus:outline-none focus:border-green-500 focus:bg-transparent"
+                type="text"
+                name="search"
+                id="search"
+                placeholder="Buscar Profesor"
+                value={searchTeacher}
+                onChange={(e) => setSearchTeacher(e.target.value)}
+              />
+              <Link to={`/search/${searchTeacher}`} className="flex items-center justify-center px-4 py-2 bg-gray-100 hover:bg-gray-300">
                 <SearchIcon className="h-5" />
               </Link>
             </div>
