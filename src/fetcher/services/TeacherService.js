@@ -16,5 +16,12 @@ class TeacherService {
     );
     return response;
   }
+
+  static async getAllTeachers() {
+    const response = await DataService.get(
+      `${config.api.domain}/teacher`
+    );
+    return response;
+  }
 }
 export default TeacherService;
