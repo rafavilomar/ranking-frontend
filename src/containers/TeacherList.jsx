@@ -12,6 +12,7 @@ const TeacherList = ({ match }) => {
 
     const searchTeacher = async () => {
         const response = await TeacherService.searchTeacher(teacherName);
+        console.log(response);
         response && setSearchResult(response);
     }
 

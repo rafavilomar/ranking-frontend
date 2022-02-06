@@ -1,17 +1,21 @@
+import { UserCircleIcon } from "@heroicons/react/solid";
 import React from "react"
 import { Link } from "react-router-dom";
 
 const CardTeacher = ({ teacher }) => {
     return (
         <Link to={`/teacher/${teacher.id}`} >
-            <div className="flex gap-3 p-2 rounded-md cursor-pointer shadow-sm bg-white">
+            <div className="flex gap-3 p-2 rounded-md cursor-pointer shadow-sm bg-white hover:shadow-md">
                 {/* IMAGE */}
                 <div style={{ maxHeight: 70, maxWidth: 70 }} className="flex items-center justify-center rounded-full overflow-hidden">
-                    {/* TODO: use img */}
-                    <img
-                        alt="profile picture"
-                        src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                    />
+                    {teacher.img ? (
+                        <img
+                            alt="profile"
+                            src={teacher.img}
+                        />
+                    ) : (
+                        <UserCircleIcon className="h-24 w-24 text-gray-500" />
+                    )}
                 </div>
                 {/* INFO */}
                 <div className="flex flex-col gap-1 w-full">

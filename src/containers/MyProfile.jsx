@@ -6,7 +6,7 @@ import Button from "../components/buttons/Button";
 import TextInput from "../components/forms/TextInput";
 import Header from "../components/layout/Header";
 
-import { PencilIcon } from "@heroicons/react/solid";
+import { PencilIcon, UserIcon } from "@heroicons/react/solid";
 import Footer from "../components/layout/Footer";
 import UserService from "../fetcher/services/UserService";
 import GeneralContext from "../context/context";
@@ -14,7 +14,7 @@ import { ThumbUpIcon, ThumbDownIcon } from "@heroicons/react/solid";
 
 const MyProfile = () => {
 
-  const { id, username } = useContext(GeneralContext);
+  const { id, username, img } = useContext(GeneralContext);
 
   //TABS
   const [account, setAccount] = useState(true);
@@ -58,10 +58,11 @@ const MyProfile = () => {
         <div className="flex justify-center">
           <div className="flex flex-col gap-2 bg-white p-2 rounded-md content-start" style={{ height: "fit-content" }} >
             <div className="relative h-60 w-60 rounded-lg overflow-hidden flex items-center justify-center">
-              <img
-                alt="profile picture"
-                src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-              />
+              {img ? (
+                <img src={img} alt="profile" />
+              ) : (
+                <UserIcon className="bg-gray-500 text-gray-100" />
+              )}
               <button className="absolute right-2 bottom-2 z-10 bg-gray-600 p-2 rounded-md ">
                 <PencilIcon className="text-white h-5" />
               </button>

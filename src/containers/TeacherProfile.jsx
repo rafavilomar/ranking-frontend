@@ -6,6 +6,7 @@ import ActionCardUser from "../components/Cards.jsx/ActionCardUser";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 import TeacherService from "../fetcher/services/TeacherService";
+import { UserCircleIcon } from "@heroicons/react/solid";
 
 const TeacherProfile = ({ match }) => {
   const [comments, setComments] = useState(true);
@@ -34,7 +35,7 @@ const TeacherProfile = ({ match }) => {
     setNegativeVotes(response.negativeVotes);
     setCommentList(response.votes);
     setSubject(response.subjects[0])
-    setSchool(response.schools[0])
+    setSchool(response.schools[0]);
   };
 
   useEffect(() => {
@@ -55,7 +56,7 @@ const TeacherProfile = ({ match }) => {
               teacherName={name}
               negativeVotes={negativeVotes}
               positiveVotes={postiveVotes}
-              img="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              img={img}
             />
           </div>
         </div>
@@ -85,10 +86,14 @@ const TeacherProfile = ({ match }) => {
               {commentList.map((comment) => (
                 <div key={comment.id} className="flex gap-4 p-2" >
                   <div style={{ maxHeight: 70, maxWidth: 70 }} className="flex items-center justify-center rounded-full overflow-hidden">
-                    <img
-                      alt="profile"
-                      src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                    />
+                    {comment.users.img ? (
+                      <img
+                        alt="profile"
+                        src={comment.users.img}
+                      />
+                    ) : (
+                      <UserCircleIcon className="h-24 w-24 text-gray-500" />
+                    )}
                   </div>
                   <div key={comment.id} className="font-sans">
                     <div className="flex gap-1 items-center">

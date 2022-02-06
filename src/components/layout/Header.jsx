@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { SearchIcon } from "@heroicons/react/solid";
+import { SearchIcon, UserCircleIcon } from "@heroicons/react/solid";
 
 import LinkButton from "../buttons/LinkButton";
 import Branch from "./Branch";
@@ -9,7 +9,7 @@ import GeneralContext from "../../context/context";
 
 const Header = () => {
 
-  const { token, setSearchTeacher, searchTeacher } = useContext(GeneralContext);
+  const { token, setSearchTeacher, searchTeacher, img } = useContext(GeneralContext);
   return (
     <header className="shadow-md bg-white py-2 w-full">
       <div className="w-full justify-between items-center inline-flex px-4">
@@ -43,11 +43,15 @@ const Header = () => {
           <div className="flex items-center gap-5">
             {token ? (
               // PROFILE BUTTON
-              <Link to="/my-profile" className="h-12 w-12 flex items-center justify-center rounded-full overflow-hidden hover:shadow-sm hover:border-gray-300" >
-                <img
-                  alt="profile picture"
-                  src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                />
+              <Link to="/my-profile" className="h-12 w-12 flex items-center justify-center rounded-full overflow-hidden hover:shadow-lg hover:border-gray-300" >
+                {img ? (
+                  <img
+                    alt="profile"
+                    src={img}
+                  />
+                ) : (
+                  <UserCircleIcon className="text-gray-500" />
+                )}
               </Link>
             ) : (<>
               <LinkButton value="Sign up" href="/signup" />
