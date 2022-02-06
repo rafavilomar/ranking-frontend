@@ -22,7 +22,7 @@ const ActionCardUser = ({
         <div className="mb-3">
           <h5 className="font-sans font-semibold text-xl">{teacherName}</h5>
           <p>
-            {subject} • {school}
+            {subject?.name} • {school?.name}
           </p>
         </div>
       )}
@@ -35,7 +35,7 @@ const ActionCardUser = ({
                 <h6 className="font-sans font-semibold text-lg">
                   {teacherName}
                 </h6>
-                <p className="font-sans">{subject}</p>
+                <p className="font-sans">{subject?.name}</p>
               </div>
             )}
           </div>

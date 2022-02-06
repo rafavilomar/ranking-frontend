@@ -44,7 +44,6 @@ const MyProfile = () => {
     const response = await UserService.getUserInfo(id);
     setEmail(response.email);
     setVotes(response.votes);
-    console.log(response);
   }
 
   useEffect(() => {
@@ -142,7 +141,7 @@ const MyProfile = () => {
                   <div className="flex flex-col gap-2">
                     <div>
                       <span className="font-medium">Para:</span>
-                      <span className="text-gray-600">{` ${vote.teacherName}`}</span>
+                      <span className="text-gray-600">{` ${vote.teacher.fullname}`}</span>
                       <span> • </span>
                       <span className="font-medium">Fecha:</span>
                       <span className="text-gray-600"> <Moment locale="es" fromNow date={vote.timestamp} /></span></div>

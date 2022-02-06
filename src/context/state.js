@@ -11,7 +11,7 @@ const GeneralState = ({ children }) => {
         username: localStorage.getItem("username") || null,
         img: localStorage.getItem("img") || null,
         token: localStorage.getItem("token") || null,
-        searchTeacher: null
+        searchTeacher: ""
     }
 
     const [state, dispatch] = useReducer(GeneralReducer, initialState);
