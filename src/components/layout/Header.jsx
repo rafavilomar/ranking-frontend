@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { SearchIcon } from "@heroicons/react/solid";
 
@@ -10,6 +10,7 @@ import GeneralContext from "../../context/context";
 const Header = () => {
 
   const { token } = useContext(GeneralContext);
+  const [teacherName, setTeacherName] = useState("");
 
   return (
     <header className="shadow-md bg-white py-2 w-full">
@@ -32,9 +33,10 @@ const Header = () => {
                   name="search"
                   id="search"
                   placeholder="Buscar Profesor"
+                  onChange={(e) => setTeacherName(e.target.value)}
                 />
               </div>
-              <Link to="/search" className="flex items-center justify-center px-4 py-2 hover:bg-gray-200">
+              <Link to={`/search/${teacherName}`} className="flex items-center justify-center px-4 py-2 hover:bg-gray-200">
                 <SearchIcon className="h-5" />
               </Link>
             </div>

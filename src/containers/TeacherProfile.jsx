@@ -7,7 +7,7 @@ import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 import TeacherService from "../fetcher/services/TeacherService";
 
-const TeacherProfile = () => {
+const TeacherProfile = ({ match }) => {
   const [comments, setComments] = useState(true);
   const [info, setInfo] = useState(false);
 
@@ -24,8 +24,8 @@ const TeacherProfile = () => {
   };
 
   const getTeacherInfo = async () => {
-    const response = await TeacherService.getTeacherInfo();
-    console.log(response);
+    const teacherId = match.params.teacherId;
+    const response = await TeacherService.getTeacherInfo(teacherId);
     setName(response.fullname);
     setImg(response.img);
     setPositiveVotes(response.positiveVotes);

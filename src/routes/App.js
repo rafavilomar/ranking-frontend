@@ -17,8 +17,8 @@ const App = () => {
       <ProtectedRoute requireLogin={false} exact path="/login" component={Login} />
       <ProtectedRoute requireLogin={false} exact path="/signup" component={Signup} />
       <ProtectedRoute exact path="/my-profile" component={MyProfile} />
-      <ProtectedRoute exact path="/teacher" component={TeacherProfile} />
-      <ProtectedRoute exact path="/search" component={TeacherList} />
+      <ProtectedRoute exact path="/teacher/:teacherId" component={TeacherProfile} />
+      <ProtectedRoute exact path="/search/:teacherName" component={TeacherList} />
     </Switch>
   );
 }
