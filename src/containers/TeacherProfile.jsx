@@ -6,8 +6,9 @@ import ActionCardUser from "../components/Cards.jsx/ActionCardUser";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 import TeacherService from "../fetcher/services/TeacherService";
+import { UserCircleIcon } from "@heroicons/react/solid";
 
-const TeacherProfile = () => {
+const TeacherProfile = ({ match }) => {
   const [comments, setComments] = useState(true);
   const [info, setInfo] = useState(false);
 
@@ -15,6 +16,8 @@ const TeacherProfile = () => {
   const [img, setImg] = useState();
   const [postiveVotes, setPositiveVotes] = useState(0);
   const [negativeVotes, setNegativeVotes] = useState(0);
+  const [school, setSchool] = useState();
+  const [subject, setSubject] = useState();
 
   const [commentList, setCommentList] = useState([]);
 
@@ -24,17 +27,19 @@ const TeacherProfile = () => {
   };
 
   const getTeacherInfo = async () => {
-    const response = await TeacherService.getTeacherInfo();
-    console.log(response);
+    const teacherId = match.params.teacherId;
+    const response = await TeacherService.getTeacherInfo(teacherId);
     setName(response.fullname);
     setImg(response.img);
     setPositiveVotes(response.positiveVotes);
     setNegativeVotes(response.negativeVotes);
     setCommentList(response.votes);
+    setSubject(response.subjects[0])
+    setSchool(response.schools[0]);
   };
 
-  useEffect(async () => {
-    await getTeacherInfo();
+  useEffect(() => {
+    getTeacherInfo();
   }, []);
 
   return (
@@ -46,12 +51,12 @@ const TeacherProfile = () => {
           <div className="mt-10 mb-10">
             <ActionCardUser
               type="FULL"
-              subject="Asignatura"
-              school="Centro educativo"
+              subject={subject}
+              school={school}
               teacherName={name}
               negativeVotes={negativeVotes}
               positiveVotes={postiveVotes}
-              img="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              img={img}
             />
           </div>
         </div>
@@ -79,17 +84,21 @@ const TeacherProfile = () => {
           {comments && (
             <div className="flex flex-col gap-2">
               {commentList.map((comment) => (
-                <div className="flex gap-4 p-2" >
+                <div key={comment.id} className="flex gap-4 p-2" >
                   <div style={{ maxHeight: 70, maxWidth: 70 }} className="flex items-center justify-center rounded-full overflow-hidden">
-                    <img
-                      alt="profile picture"
-                      src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                    />
+                    {comment.users.img ? (
+                      <img
+                        alt="profile"
+                        src={comment.users.img}
+                      />
+                    ) : (
+                      <UserCircleIcon className="h-24 w-24 text-gray-500" />
+                    )}
                   </div>
                   <div key={comment.id} className="font-sans">
                     <div className="flex gap-1 items-center">
                       <h6 className="font-semibold text-base text-gray-800">
-                        {`@${comment.username}`}
+                        {`@${comment.users.idAccount.username}`}
                       </h6>
                       <span className="text-gray-600">• <Moment locale="es" fromNow date={comment.timestamp} /></span>
                     </div>

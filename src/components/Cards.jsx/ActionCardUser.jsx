@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ThumbUpIcon, ThumbDownIcon } from "@heroicons/react/solid";
+import { ThumbUpIcon, ThumbDownIcon, UserIcon } from "@heroicons/react/solid";
 import Button from "../buttons/Button";
 import IconButton from "../buttons/IconButton";
 import VoteService from "../../fetcher/services/VoteService";
@@ -22,20 +22,24 @@ const ActionCardUser = ({
         <div className="mb-3">
           <h5 className="font-sans font-semibold text-xl">{teacherName}</h5>
           <p>
-            {subject} • {school}
+            {subject?.name} • {school?.name}
           </p>
         </div>
       )}
       <div className="flex gap-4">
         <div>
           <div className="w-96 h-96 overflow-hidden shadow-md flex items-center justify-center rounded-xl relative">
-            <img src={img} alt="teacherProfile" />
+            {img ? (
+              <img src={img} alt="teacherProfile" />
+            ) : (
+              <UserIcon className="bg-gray-500 text-gray-100" />
+            )}
             {type === "NORMAL" && (
               <div className="absolute bg-white bottom-0 p-4 left-0 right-0 top-auto">
                 <h6 className="font-sans font-semibold text-lg">
                   {teacherName}
                 </h6>
-                <p className="font-sans">{subject}</p>
+                <p className="font-sans">{subject?.name}</p>
               </div>
             )}
           </div>

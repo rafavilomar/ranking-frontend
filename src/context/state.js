@@ -1,7 +1,7 @@
 import React, { useReducer } from "react"
 import GeneralContext from "./context"
 import GeneralReducer from "./reducer"
-import { SET_CONTEXT } from "./types"
+import { SET_CONTEXT, SET_SEARCH_TEACHER } from "./types"
 
 
 const GeneralState = ({ children }) => {
@@ -10,7 +10,8 @@ const GeneralState = ({ children }) => {
         id: localStorage.getItem("id") || null,
         username: localStorage.getItem("username") || null,
         img: localStorage.getItem("img") || null,
-        token: localStorage.getItem("token") || null
+        token: localStorage.getItem("token") || null,
+        searchTeacher: ""
     }
 
     const [state, dispatch] = useReducer(GeneralReducer, initialState);
@@ -26,8 +27,15 @@ const GeneralState = ({ children }) => {
         })
     }
 
+    const setSearchTeacher = (value) => {
+        dispatch({
+            type: SET_SEARCH_TEACHER,
+            payload: value
+        })
+    }
+
     return (
-        <GeneralContext.Provider value={{ setContext, ...state }}>
+        <GeneralContext.Provider value={{ setSearchTeacher, setContext, ...state }}>
             {children}
         </GeneralContext.Provider>
     )

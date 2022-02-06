@@ -18,7 +18,7 @@ const Home = () => {
               ¿Qué piensas de este profesor?
             </h3>
             <ActionCardUser
-              img="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              // img="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
               teacherName="Nombre del Profesor"
               subject="Asignatura"
             />
