@@ -2,17 +2,24 @@ import config from "../../config";
 import DataService from "../DataService";
 
 class TeacherService {
-  dataService;
-  constructor() {
-    this.dataService = new DataService();
-  }
-  
 
-  async getTeacherInfo() {
-    console.log(config);
-    console.log(config.api.domain);
-    const response = await this.dataService.get(
-      `${config.api.domain}/teacher/1`
+  static async getTeacherInfo(teacherId) {
+    const response = await DataService.get(
+      `${config.api.domain}/teacher/${teacherId}`
+    );
+    return response;
+  }
+
+  static async searchTeacher(teacherName) {
+    const response = await DataService.get(
+      `${config.api.domain}/teacher/search/${teacherName}`
+    );
+    return response;
+  }
+
+  static async getAllTeachers() {
+    const response = await DataService.get(
+      `${config.api.domain}/teacher`
     );
     return response;
   }
