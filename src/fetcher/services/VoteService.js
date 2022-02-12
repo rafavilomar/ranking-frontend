@@ -15,5 +15,11 @@ class VoteService {
     const response = await DataService.post(`${config.api.domain}/vote`, body);
     return response;
   }
+
+  static async checkVote(idTeacher, idUser) {
+    const response = await DataService.get(`${config.api.domain}/vote/checkVote?idTeacher=${idTeacher}&idUser=${idUser}`);
+    return response;
+  }
+
 }
 export default VoteService;

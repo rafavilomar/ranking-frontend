@@ -98,21 +98,23 @@ const ActionCardUser = ({
               </div>
             )}
           </div>
-          <div className="flex items-center gap-6 mt-5 w-96">
-            <IconButton>
-              <ThumbUpIcon
-                className="text-white h-6"
-                onClick={() => openModal(true)}
-              />
-            </IconButton>
-            <IconButton>
-              <ThumbDownIcon
-                className="text-white h-6"
-                onClick={() => openModal(false)}
-              />
-            </IconButton>
-            <Button value="No lo reconozco" full />
-          </div>
+          {!VoteService.checkVote(idTeacher, id) && (
+            <div className="flex items-center gap-6 mt-5 w-96">
+              <IconButton>
+                <ThumbUpIcon
+                  className="text-white h-6"
+                  onClick={() => openModal(true)}
+                />
+              </IconButton>
+              <IconButton>
+                <ThumbDownIcon
+                  className="text-white h-6"
+                  onClick={() => openModal(false)}
+                />
+              </IconButton>
+              <Button value="No lo reconozco" full />
+            </div>
+          )}
         </div>
         {type === "FULL" && (
           <div className="flex flex-col gap-2">
