@@ -1,4 +1,4 @@
-import { SET_CONTEXT, SET_SEARCH_TEACHER } from "./types";
+import { SET_CONTEXT, SET_SEARCH_TEACHER, SET_TOKEN } from "./types";
 
 const GeneralReducer = (state, action) => {
     const { payload, type } = action;
@@ -16,6 +16,12 @@ const GeneralReducer = (state, action) => {
             return {
                 ...state,
                 searchTeacher: payload
+            }
+
+        case SET_TOKEN:
+            return {
+                ...state,
+                token: payload
             }
 
         default:

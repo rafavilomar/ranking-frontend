@@ -1,8 +1,8 @@
 import axios from "axios";
-import middelware from "./Middelware";
+import { middelware } from "./Middelware";
 
 axios.interceptors.response.use((response) => {
-  //
+  return response;
 }, (err) => {
   middelware(err.response)
   return Promise.reject(err)

@@ -17,7 +17,7 @@ const ActionCardUser = ({
   idTeacher
 }) => {
 
-  const { id } = useContext(GeneralContext);
+  const { id, token } = useContext(GeneralContext);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false)
 
@@ -48,6 +48,14 @@ const ActionCardUser = ({
     const response = await VoteService.makeVote(body)
     response && window.location.reload();
 
+  }
+
+  const checkVote = () => {
+    if (token) {
+      return VoteService.checkVote(idTeacher, id)
+    } else {
+      return false;
+    }
   }
 
   const modalBox = () => {
@@ -98,7 +106,7 @@ const ActionCardUser = ({
               </div>
             )}
           </div>
-          {!VoteService.checkVote(idTeacher, id) && (
+          {!checkVote() && (
             <div className="flex items-center gap-6 mt-5 w-96">
               <IconButton>
                 <ThumbUpIcon
