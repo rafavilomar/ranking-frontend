@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 
 import { ThumbUpIcon, ThumbDownIcon, UserIcon } from "@heroicons/react/solid";
 import Button from "../buttons/Button";
 import IconButton from "../buttons/IconButton";
 import VoteService from "../../fetcher/services/VoteService";
+import GeneralContext from "../../context/context";
 
 const ActionCardUser = ({
   type = "NORMAL",
@@ -13,11 +14,65 @@ const ActionCardUser = ({
   img,
   positiveVotes,
   negativeVotes,
+  idTeacher
 }) => {
-  let voteService = new VoteService();
+
+  const { id } = useContext(GeneralContext);
+  const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false)
+
+  // vote data
+  const [comment, setCommet] = useState("");
+  const [vote, setVote] = useState();
+
+  const openModal = (vote) => {
+    setVote(vote)
+    setShowModal(true);
+  }
+
+  const hideModal = () => {
+    setVote("")
+    setShowModal(false)
+    setCommet("")
+  }
+
+  const sendVote = async () => {
+
+    setLoading(true)
+    const body = {
+      vote: vote,
+      comment: comment,
+      teacherId: idTeacher,
+      usersId: id
+    }
+    const response = await VoteService.makeVote(body)
+    response && window.location.reload();
+
+  }
+
+  const modalBox = () => {
+    return (
+      <div className="z-30 bg-opacity-60 flex justify-center items-center bg-gray-800 fixed top-0 left-0 right-0 bottom-0" >
+        <div className=" bg-white p-3 rounded-md shadow-md w-80 gap-2 flex-col flex">
+          <div className="py-1">
+            <h3 className="text-lg font-semibold mb-1">Realizar votación</h3>
+            <hr />
+          </div>
+          <div>
+            <textarea className="w-full text-gray-600 focus:shadow-none focus:outline-none border border-gray-400 py-1 px-2 rounded" placeholder="Mensaje (Opcional)" rows={5}></textarea>
+          </div>
+          <div className="flex justify-between">
+            <Button value="Cancelar" funtion={hideModal} />
+            <Button value="Confirmar" loading={loading} style="primary" funtion={sendVote} />
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <>
+      {showModal && modalBox()}
       {type === "FULL" && (
         <div className="mb-3">
           <h5 className="font-sans font-semibold text-xl">{teacherName}</h5>
@@ -47,13 +102,13 @@ const ActionCardUser = ({
             <IconButton>
               <ThumbUpIcon
                 className="text-white h-6"
-                onClick={() => voteService.makeVote()}
+                onClick={() => openModal(true)}
               />
             </IconButton>
             <IconButton>
               <ThumbDownIcon
                 className="text-white h-6"
-                onClick={() => voteService.makeVote()}
+                onClick={() => openModal(false)}
               />
             </IconButton>
             <Button value="No lo reconozco" full />

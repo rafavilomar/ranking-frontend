@@ -11,8 +11,8 @@ class VoteService {
     return response;
   }
 
-  static async makeVote() {
-    const response = await DataService.post(`http://localhost:3500/vote`);
+  static async makeVote(body) {
+    const response = await DataService.post(`${config.api.domain}/vote`, body);
     return response;
   }
 }
