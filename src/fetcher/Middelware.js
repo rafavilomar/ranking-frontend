@@ -1,4 +1,5 @@
 const middelware = (response) => {
+    console.log("Middelware");
 
     if (response.status === 401) {
         localStorage.removeItem("id");
