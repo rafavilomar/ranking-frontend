@@ -12,6 +12,7 @@ const TeacherProfile = ({ match }) => {
   const [comments, setComments] = useState(true);
   const [info, setInfo] = useState(false);
 
+  const [id, setId] = useState();
   const [name, setName] = useState("Nombre del profesor");
   const [img, setImg] = useState();
   const [postiveVotes, setPositiveVotes] = useState(0);
@@ -29,6 +30,7 @@ const TeacherProfile = ({ match }) => {
   const getTeacherInfo = async () => {
     const teacherId = match.params.teacherId;
     const response = await TeacherService.getTeacherInfo(teacherId);
+    setId(response.id)
     setName(response.fullname);
     setImg(response.img);
     setPositiveVotes(response.positiveVotes);
@@ -57,6 +59,7 @@ const TeacherProfile = ({ match }) => {
               negativeVotes={negativeVotes}
               positiveVotes={postiveVotes}
               img={img}
+              idTeacher={id}
             />
           </div>
         </div>

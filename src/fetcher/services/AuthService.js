@@ -16,5 +16,12 @@ class AuthService {
         );
         return response;
     }
+
+    static async refreshToken() {
+        const response = await DataService.get(
+            `${config.api.domain}/refreshToken`
+        );
+        return response;
+    }
 }
 export default AuthService;

@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import CardUser from "../components/Cards.jsx/CardUser";
 
 import Header from "../components/layout/Header";
 
 import Footer from "../components/layout/Footer";
 import ActionCardUser from "../components/Cards.jsx/ActionCardUser";
+import GeneralContext from "../context/context";
+import AuthService from "../fetcher/services/AuthService";
 
 const Home = () => {
-  
+
+  const { token, setToken } = useContext(GeneralContext);
+  const twentyMinutes = 20 * 1000 * 60;
+
+  const refreshToken = () => {
+    setToken(token)
+    setInterval(async () => {
+      const token = await AuthService.refreshToken();
+      setToken(token)
+    }, twentyMinutes)
+  }
+
+  useEffect(() => {
+    token && refreshToken();
+  }, [])
+
   return (
     <div>
       <Header />

@@ -1,7 +1,7 @@
 import React, { useReducer } from "react"
 import GeneralContext from "./context"
 import GeneralReducer from "./reducer"
-import { SET_CONTEXT, SET_SEARCH_TEACHER } from "./types"
+import { SET_CONTEXT, SET_SEARCH_TEACHER, SET_TOKEN } from "./types"
 
 
 const GeneralState = ({ children }) => {
@@ -34,8 +34,18 @@ const GeneralState = ({ children }) => {
         })
     }
 
+    const setToken = (token) => {
+        if (token) {
+            localStorage.setItem("token", token);
+            dispatch({
+                type: SET_TOKEN,
+                payload: token
+            })
+        }
+    }
+
     return (
-        <GeneralContext.Provider value={{ setSearchTeacher, setContext, ...state }}>
+        <GeneralContext.Provider value={{ setToken, setSearchTeacher, setContext, ...state }}>
             {children}
         </GeneralContext.Provider>
     )

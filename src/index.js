@@ -8,8 +8,6 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import GeneralState from './context/state';
 
-
-
 ReactDOM.render(
   <GeneralState>
     <BrowserRouter>
