@@ -1,8 +1,9 @@
-import { removeAll } from '../utils/localStorage';
+import removeAll from "../utils/localStorage";
 
-export const middelware = (response) => {
+const middelware = (response) => {
   if (response.status === 401) {
     removeAll();
     window.location.reload();
   }
 };
+export default middelware;

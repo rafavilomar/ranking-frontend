@@ -9,21 +9,22 @@ import GeneralContext from "../context/context";
 import AuthService from "../fetcher/services/AuthService";
 
 const Home = () => {
-
   const { token, setToken } = useContext(GeneralContext);
   const twentyMinutes = 20 * 1000 * 60;
 
   const refreshToken = () => {
-    setToken(token)
+    setToken(token);
     setInterval(async () => {
-      const token = await AuthService.refreshToken();
-      setToken(token)
-    }, twentyMinutes)
-  }
+      const newToken = await AuthService.refreshToken();
+      setToken(newToken);
+    }, twentyMinutes);
+  };
 
   useEffect(() => {
-    token && refreshToken();
-  }, [])
+    if (token) {
+      refreshToken();
+    }
+  }, []);
 
   return (
     <div>

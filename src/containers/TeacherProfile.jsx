@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Moment from "react-moment";
-import "moment/locale/es"
+import "moment/locale/es";
+import { UserCircleIcon } from "@heroicons/react/solid";
 
 import ActionCardUser from "../components/Cards.jsx/ActionCardUser";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 import TeacherService from "../fetcher/services/TeacherService";
-import { UserCircleIcon } from "@heroicons/react/solid";
 
 const TeacherProfile = ({ match }) => {
   const [comments, setComments] = useState(true);
@@ -28,15 +28,15 @@ const TeacherProfile = ({ match }) => {
   };
 
   const getTeacherInfo = async () => {
-    const teacherId = match.params.teacherId;
+    const { teacherId } = match.params;
     const response = await TeacherService.getTeacherInfo(teacherId);
-    setId(response.id)
+    setId(response.id);
     setName(response.fullname);
     setImg(response.img);
     setPositiveVotes(response.positiveVotes);
     setNegativeVotes(response.negativeVotes);
     setCommentList(response.votes);
-    setSubject(response.subjects[0])
+    setSubject(response.subjects[0]);
     setSchool(response.schools[0]);
   };
 
@@ -66,16 +66,20 @@ const TeacherProfile = ({ match }) => {
         {/* Tabs */}
         <div className="bg-white p-3 rounded-md flex gap-3">
           <button
-            className={`py-2 px-4 rounded-md font-semibold text-md ${comments ? "bg-green-100 text-green-800" : "text-gray-700"
-              } `}
+            type="button"
+            className={`py-2 px-4 rounded-md font-semibold text-md ${
+              comments ? "bg-green-100 text-green-800" : "text-gray-700"
+            } `}
             onClick={changeTab}
             disabled={comments}
           >
             Opiniones
           </button>
           <button
-            className={`py-2 px-4 rounded-md font-semibold text-md ${info ? "bg-green-100 text-green-800" : "text-gray-700"
-              } `}
+            type="button"
+            className={`py-2 px-4 rounded-md font-semibold text-md ${
+              info ? "bg-green-100 text-green-800" : "text-gray-700"
+            } `}
             onClick={changeTab}
             disabled={info}
           >
@@ -87,13 +91,13 @@ const TeacherProfile = ({ match }) => {
           {comments && (
             <div className="flex flex-col gap-2">
               {commentList.map((comment) => (
-                <div key={comment.id} className="flex gap-4 p-2" >
-                  <div style={{ maxHeight: 70, maxWidth: 70 }} className="flex items-center justify-center rounded-full overflow-hidden">
+                <div key={comment.id} className="flex gap-4 p-2">
+                  <div
+                    style={{ maxHeight: 70, maxWidth: 70 }}
+                    className="flex items-center justify-center rounded-full overflow-hidden"
+                  >
                     {comment.users.img ? (
-                      <img
-                        alt="profile"
-                        src={comment.users.img}
-                      />
+                      <img alt="profile" src={comment.users.img} />
                     ) : (
                       <UserCircleIcon className="h-24 w-24 text-gray-500" />
                     )}
@@ -103,11 +107,12 @@ const TeacherProfile = ({ match }) => {
                       <h6 className="font-semibold text-base text-gray-800">
                         {`@${comment.users.idAccount.username}`}
                       </h6>
-                      <span className="text-gray-600">• <Moment locale="es" fromNow date={comment.timestamp} /></span>
+                      <span className="text-gray-600">
+                        •
+                        <Moment locale="es" fromNow date={comment.timestamp} />
+                      </span>
                     </div>
-                    <p className="text-gray-800 text-sm">
-                      {comment.comment}
-                    </p>
+                    <p className="text-gray-800 text-sm">{comment.comment}</p>
                   </div>
                 </div>
               ))}

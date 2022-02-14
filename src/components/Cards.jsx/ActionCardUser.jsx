@@ -14,69 +14,74 @@ const ActionCardUser = ({
   img,
   positiveVotes,
   negativeVotes,
-  idTeacher
+  idTeacher,
 }) => {
-
   const { id, token } = useContext(GeneralContext);
   const [showModal, setShowModal] = useState(false);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   // vote data
   const [comment, setCommet] = useState("");
   const [vote, setVote] = useState();
 
-  const openModal = (vote) => {
-    setVote(vote)
+  const openModal = (newVote) => {
+    setVote(newVote);
     setShowModal(true);
-  }
+  };
 
   const hideModal = () => {
-    setVote("")
-    setShowModal(false)
-    setCommet("")
-  }
+    setVote("");
+    setShowModal(false);
+    setCommet("");
+  };
 
   const sendVote = async () => {
-
-    setLoading(true)
+    setLoading(true);
     const body = {
-      vote: vote,
-      comment: comment,
+      vote,
+      comment,
       teacherId: idTeacher,
-      usersId: id
+      usersId: id,
+    };
+    const response = await VoteService.makeVote(body);
+    if (response) {
+      window.location.reload();
     }
-    const response = await VoteService.makeVote(body)
-    response && window.location.reload();
-
-  }
+  };
 
   const checkVote = () => {
     if (token) {
-      return VoteService.checkVote(idTeacher, id)
-    } else {
-      return false;
+      return VoteService.checkVote(idTeacher, id);
     }
-  }
+    return false;
+  };
 
-  const modalBox = () => {
-    return (
-      <div className="z-30 bg-opacity-60 flex justify-center items-center bg-gray-800 fixed top-0 left-0 right-0 bottom-0" >
-        <div className=" bg-white p-3 rounded-md shadow-md w-80 gap-2 flex-col flex">
-          <div className="py-1">
-            <h3 className="text-lg font-semibold mb-1">Realizar votación</h3>
-            <hr />
-          </div>
-          <div>
-            <textarea className="w-full text-gray-600 focus:shadow-none focus:outline-none border border-gray-400 py-1 px-2 rounded" placeholder="Mensaje (Opcional)" rows={5}></textarea>
-          </div>
-          <div className="flex justify-between">
-            <Button value="Cancelar" funtion={hideModal} />
-            <Button value="Confirmar" loading={loading} style="primary" funtion={sendVote} />
-          </div>
+  const modalBox = () => (
+    <div className="z-30 bg-opacity-60 flex justify-center items-center bg-gray-800 fixed top-0 left-0 right-0 bottom-0">
+      <div className=" bg-white p-3 rounded-md shadow-md w-80 gap-2 flex-col flex">
+        <div className="py-1">
+          <h3 className="text-lg font-semibold mb-1">Realizar votación</h3>
+          <hr />
+        </div>
+        <div>
+          <textarea
+            className="w-full text-gray-600 focus:shadow-none focus:outline-none border border-gray-400 py-1 px-2 rounded"
+            placeholder="Mensaje (Opcional)"
+            rows={5}
+          />
+        </div>
+        <div className="flex justify-between">
+          <Button value="Cancelar" funtion={hideModal} />
+          <Button
+            value="Confirmar"
+            loading={loading}
+            style="primary"
+            funtion={sendVote}
+          />
         </div>
       </div>
-    )
-  }
+    </div>
+  );
 
   return (
     <>

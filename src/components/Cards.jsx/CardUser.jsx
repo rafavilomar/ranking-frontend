@@ -1,26 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const CardUser = ({
   type = "NORMAL",
   image,
-  title,
-  content,
   rate,
   color,
   votes = 300,
 }) => {
   const [className, setClassName] = React.useState();
 
-  React.useEffect(
-    (rule) => {
-      if (type === "NORMAL") {
-        setClassName(" w-80 h-96");
-      } else {
-        setClassName("w-64 h-72");
-      }
-    },
-    [type]
-  );
+  useEffect(() => {
+    if (type === "NORMAL") {
+      setClassName(" w-80 h-96");
+    } else {
+      setClassName("w-64 h-72");
+    }
+  }, [type]);
 
   return (
     <div

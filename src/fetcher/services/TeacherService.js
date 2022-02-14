@@ -1,5 +1,5 @@
-import config from '../../config';
-import DataService from '../DataService';
+import config from "../../config";
+import DataService from "../DataService";
 
 class TeacherService {
   static async getTeacherInfo(teacherId) {
