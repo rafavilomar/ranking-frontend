@@ -1,10 +1,8 @@
+import { removeAll } from "../utils/localStorage";
+
 export const middelware = (response) => {
     if (response.status === 401) {
-        localStorage.removeItem("id");
-        localStorage.removeItem("username");
-        localStorage.removeItem("img");
-        localStorage.removeItem("token");
-
+        removeAll()
         window.location.reload();
     }
 

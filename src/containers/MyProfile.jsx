@@ -11,15 +11,17 @@ import Footer from "../components/layout/Footer";
 import UserService from "../fetcher/services/UserService";
 import GeneralContext from "../context/context";
 import { ThumbUpIcon, ThumbDownIcon } from "@heroicons/react/solid";
+import { removeAll } from "../utils/localStorage";
+import { useHistory } from "react-router-dom";
 
 const MyProfile = () => {
 
   const { id, username, img } = useContext(GeneralContext);
+  let history = useHistory();
 
   //TABS
   const [account, setAccount] = useState(true);
   const [activities, setActivities] = useState(false);
-  const [logout, setLogout] = useState(false);
 
   //USER INFO
   const [email, setEmail] = useState();
@@ -28,14 +30,11 @@ const MyProfile = () => {
   const changeTab = (tab) => {
     setAccount(false);
     setActivities(false);
-    setLogout(false)
 
     if (tab === 0) {
       setAccount(true)
     } else if (tab === 1) {
       setActivities(true)
-    } else {
-      setLogout(true)
     }
 
   };
@@ -44,6 +43,11 @@ const MyProfile = () => {
     const response = await UserService.getUserInfo(id);
     setEmail(response.email);
     setVotes(response.votes);
+  }
+
+  const logout = () => {
+    removeAll();
+    history.push("/")
   }
 
   useEffect(() => {
@@ -86,10 +90,8 @@ const MyProfile = () => {
                 Actividades
               </button>
               <button
-                className={`py-2 px-4 rounded-md font-semibold text-md ${logout ? "bg-green-100 text-green-800" : "text-gray-700"
-                  } `}
-                onClick={() => changeTab(2)}
-                disabled={logout}
+                className={`py-2 px-4 rounded-md font-semibold text-md text-gray-700`}
+                onClick={() => logout()}
               >
                 Cerrar sesión
               </button>
