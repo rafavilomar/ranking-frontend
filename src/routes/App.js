@@ -1,16 +1,16 @@
-import React from "react";
-import { Switch } from "react-router-dom";
+import React from 'react';
+import { Switch } from 'react-router-dom';
 
 // CONTAINERS
-import Login from "../containers/Login";
-import Signup from "../containers/Signup";
-import Home from "../containers/Home";
-import MyProfile from "../containers/MyProfile";
-import TeacherProfile from "../containers/TeacherProfile";
-import TeacherList from "../containers/TeacherList";
-import ProtectedRoute from "../components/layout/ProtectedRoute";
+import Login from '../containers/Login';
+import Signup from '../containers/Signup';
+import Home from '../containers/Home';
+import MyProfile from '../containers/MyProfile';
+import TeacherProfile from '../containers/TeacherProfile';
+import TeacherList from '../containers/TeacherList';
+import ProtectedRoute from '../components/layout/ProtectedRoute';
 
-const App = () => {
+function App() {
   return (
     <Switch>
       <ProtectedRoute requireLogin={false} exact path="/" component={Home} />

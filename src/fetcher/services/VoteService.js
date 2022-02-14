@@ -1,12 +1,11 @@
-import config from "../../config";
-import DataService from "../DataService";
+import config from '../../config';
+import DataService from '../DataService';
 
 class VoteService {
-
   static async getCommentByTeacher() {
     const response = await DataService.get(
       `${config.api.domain}/vote/byTeacher/1`,
-      { headers: { "Content-Type": "application/json" } }
+      { headers: { 'Content-Type': 'application/json' } },
     );
     return response;
   }
@@ -20,6 +19,5 @@ class VoteService {
     const response = await DataService.get(`${config.api.domain}/vote/checkVote?idTeacher=${idTeacher}&idUser=${idUser}`);
     return response;
   }
-
 }
 export default VoteService;
