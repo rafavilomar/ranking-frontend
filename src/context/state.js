@@ -1,4 +1,5 @@
 import React, { useMemo, useReducer } from "react";
+import PropTypes from "prop-types";
 import GeneralContext from "./context";
 import GeneralReducer from "./reducer";
 import { SET_CONTEXT, SET_SEARCH_TEACHER, SET_TOKEN } from "./types";
@@ -42,12 +43,15 @@ function GeneralState({ children }) {
     }
   };
 
-  const providerValue = useMemo(() => ({
-    setToken,
-    setSearchTeacher,
-    setContext,
-    ...state,
-  }), []);
+  const providerValue = useMemo(
+    () => ({
+      setToken,
+      setSearchTeacher,
+      setContext,
+      ...state,
+    }),
+    []
+  );
 
   return (
     <GeneralContext.Provider value={providerValue}>
@@ -56,3 +60,7 @@ function GeneralState({ children }) {
   );
 }
 export default GeneralState;
+
+GeneralState.propTypes = {
+  children: PropTypes.element.isRequired,
+};

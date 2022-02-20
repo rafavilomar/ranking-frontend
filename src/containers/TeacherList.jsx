@@ -1,13 +1,15 @@
-import { DocumentSearchIcon } from "@heroicons/react/solid";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+import { DocumentSearchIcon } from "@heroicons/react/solid";
 import CardTeacher from "../components/Cards.jsx/CardTeacher";
 import Header from "../components/layout/Header";
 import TeacherService from "../fetcher/services/TeacherService";
 
-const TeacherList = ({ match }) => {
+const TeacherList = () => {
   const [teacherList, setTeacherList] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
-  const { teacherName } = match.params;
+  const { teacherName } = useParams();
 
   const searchTeacher = async () => {
     const response = await TeacherService.searchTeacher(teacherName);
@@ -26,7 +28,7 @@ const TeacherList = ({ match }) => {
   useEffect(() => {
     searchTeacher();
     getAllTeachers();
-  }, [match]);
+  }, []);
 
   return (
     <>

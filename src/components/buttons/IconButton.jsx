@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const IconButton = ({
   children,
@@ -29,3 +30,15 @@ const IconButton = ({
   );
 };
 export default IconButton;
+
+IconButton.propTypes = {
+  children: PropTypes.element.isRequired,
+  funtion: PropTypes.func.isRequired,
+  type: PropTypes.oneOf(["button", "submit"]),
+  style: PropTypes.oneOf(["normal", "tertiary", "primary"]),
+};
+
+IconButton.defaultProps = {
+  type: "button",
+  style: "normal",
+};

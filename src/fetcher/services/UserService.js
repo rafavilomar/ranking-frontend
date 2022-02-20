@@ -4,7 +4,7 @@ import DataService from "../DataService";
 class UserService {
   static async getUserInfo(userId) {
     const response = await DataService.get(
-      `${config.api.domain}/user/${userId}`,
+      `${config.api.domain}/user/${userId}`
     );
     return response;
   }

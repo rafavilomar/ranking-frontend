@@ -1,14 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import LoadingSpinner from "../feedback/LoadingSpinner";
 
-const Button = ({
-  value,
-  funtion,
-  type = "button",
-  loading = false,
-  style = "normal",
-  full = false,
-}) => {
+const Button = ({ value, funtion, type, loading, style, full }) => {
   const [className, setClassName] = React.useState("");
 
   React.useEffect(() => {
@@ -35,9 +29,25 @@ const Button = ({
           <LoadingSpinner colorClass="border-white-700" />
         </div>
       ) : (
-        value || "Button"
+        value
       )}
     </button>
   );
 };
 export default Button;
+
+Button.propTypes = {
+  value: PropTypes.string.isRequired,
+  funtion: PropTypes.func.isRequired,
+  type: PropTypes.oneOf(["button", "submit"]),
+  loading: PropTypes.bool,
+  style: PropTypes.oneOf(["normal", "tertiary", "primary"]),
+  full: PropTypes.bool,
+};
+
+Button.defaultProps = {
+  type: "button",
+  loading: false,
+  style: "normal",
+  full: false,
+};

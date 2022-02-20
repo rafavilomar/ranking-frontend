@@ -1,12 +1,7 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 
-const CardUser = ({
-  type = "NORMAL",
-  image,
-  rate,
-  color,
-  votes = 300,
-}) => {
+const CardUser = ({ type, image, rate, color, votes }) => {
   const [className, setClassName] = React.useState();
 
   useEffect(() => {
@@ -33,12 +28,21 @@ const CardUser = ({
             <p className="font-sans">{votes} valoraciones</p>
           </div>
         )}
-        {/* <div className="absolute bg-white bottom-0 p-4 left-0 right-0 top-auto">
-        <h6 className="font-sans font-semibold text-lg">Nombre del profesor</h6>
-        <p className="font-sans">Asignatura</p>
-      </div> */}
       </div>
     </div>
   );
 };
 export default CardUser;
+
+CardUser.propTypes = {
+  type: PropTypes.oneOf(["SMALL", "NORMAL"]),
+  image: PropTypes.string.isRequired,
+  rate: PropTypes.number.isRequired,
+  color: PropTypes.string.isRequired,
+  votes: PropTypes.number,
+};
+
+CardUser.defaultProps = {
+  type: "NORMAL",
+  votes: null,
+};

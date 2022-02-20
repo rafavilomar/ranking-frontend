@@ -1,6 +1,8 @@
-import { UserCircleIcon } from "@heroicons/react/solid";
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+
+import { UserCircleIcon } from "@heroicons/react/solid";
 
 const CardTeacher = ({ teacher }) => (
   <Link to={`/teacher/${teacher.id}`}>
@@ -39,3 +41,13 @@ const CardTeacher = ({ teacher }) => (
   </Link>
 );
 export default CardTeacher;
+
+CardTeacher.propTypes = {
+  teacher: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    img: PropTypes.string.isRequired,
+    fullname: PropTypes.string.isRequired,
+    schools: PropTypes.arrayOf(PropTypes.object).isRequired,
+    subjects: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }).isRequired,
+};

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
 
 import { ThumbUpIcon, ThumbDownIcon, UserIcon } from "@heroicons/react/solid";
 import Button from "../buttons/Button";
@@ -7,7 +8,7 @@ import VoteService from "../../fetcher/services/VoteService";
 import GeneralContext from "../../context/context";
 
 const ActionCardUser = ({
-  type = "NORMAL",
+  type,
   teacherName,
   subject,
   school,
@@ -113,19 +114,19 @@ const ActionCardUser = ({
           </div>
           {!checkVote() && (
             <div className="flex items-center gap-6 mt-5 w-96">
-              <IconButton>
+              <IconButton funtion={() => {}}>
                 <ThumbUpIcon
                   className="text-white h-6"
                   onClick={() => openModal(true)}
                 />
               </IconButton>
-              <IconButton>
+              <IconButton funtion={() => {}}>
                 <ThumbDownIcon
                   className="text-white h-6"
                   onClick={() => openModal(false)}
                 />
               </IconButton>
-              <Button value="No lo reconozco" full />
+              <Button value="No lo reconozco" full funtion={() => {}} />
             </div>
           )}
         </div>
@@ -146,3 +147,22 @@ const ActionCardUser = ({
   );
 };
 export default ActionCardUser;
+
+ActionCardUser.propTypes = {
+  type: PropTypes.oneOf(["FULL", "NORMAL"]),
+  teacherName: PropTypes.string.isRequired,
+  subject: PropTypes.shape({ name: PropTypes.string.isRequired }).isRequired,
+  school: PropTypes.shape({ name: PropTypes.string.isRequired }),
+  img: PropTypes.string,
+  positiveVotes: PropTypes.number,
+  negativeVotes: PropTypes.number,
+  idTeacher: PropTypes.number.isRequired,
+};
+
+ActionCardUser.defaultProps = {
+  type: "NORMAL",
+  img: null,
+  school: null,
+  positiveVotes: null,
+  negativeVotes: null,
+};

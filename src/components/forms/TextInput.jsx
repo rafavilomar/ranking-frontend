@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const TextInput = ({
   value,
@@ -31,3 +32,21 @@ const TextInput = ({
   </div>
 );
 export default TextInput;
+
+TextInput.propTypes = {
+  value: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  error: PropTypes.bool,
+  type: PropTypes.oneOf(["text", "password", "email"]),
+  required: PropTypes.bool,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
+};
+
+TextInput.defaultProps = {
+  error: false,
+  type: "text",
+  required: false,
+  disabled: false,
+};

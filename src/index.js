@@ -14,7 +14,7 @@ ReactDOM.render(
       <App />
     </BrowserRouter>
   </GeneralState>,
-  document.getElementById("root"),
+  document.getElementById("root")
 );
 
 reportWebVitals();

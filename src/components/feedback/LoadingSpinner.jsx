@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const LoadingSpinner = ({ colorClass }) => (
   <div
@@ -8,3 +9,7 @@ const LoadingSpinner = ({ colorClass }) => (
   />
 );
 export default LoadingSpinner;
+
+LoadingSpinner.propTypes = {
+  colorClass: PropTypes.string.isRequired,
+};

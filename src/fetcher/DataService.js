@@ -6,7 +6,7 @@ axios.interceptors.response.use(
   (err) => {
     middelware(err.response);
     return Promise.reject(err);
-  },
+  }
 );
 
 class DataService {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Moment from "react-moment";
 import "moment/locale/es";
 import { UserCircleIcon } from "@heroicons/react/solid";
@@ -8,7 +9,7 @@ import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 import TeacherService from "../fetcher/services/TeacherService";
 
-const TeacherProfile = ({ match }) => {
+const TeacherProfile = () => {
   const [comments, setComments] = useState(true);
   const [info, setInfo] = useState(false);
 
@@ -28,7 +29,7 @@ const TeacherProfile = ({ match }) => {
   };
 
   const getTeacherInfo = async () => {
-    const { teacherId } = match.params;
+    const { teacherId } = useParams();
     const response = await TeacherService.getTeacherInfo(teacherId);
     setId(response.id);
     setName(response.fullname);

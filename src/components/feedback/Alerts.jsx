@@ -1,5 +1,6 @@
-import { CheckIcon, XIcon } from "@heroicons/react/solid";
 import React from "react";
+import PropTypes from "prop-types";
+import { CheckIcon, XIcon } from "@heroicons/react/solid";
 
 const Alert = ({ title, error = false, children }) => {
   const [className, setClassName] = React.useState("");
@@ -35,3 +36,13 @@ const Alert = ({ title, error = false, children }) => {
   );
 };
 export default Alert;
+
+Alert.propTypes = {
+  title: PropTypes.string.isRequired,
+  error: PropTypes.bool,
+  children: PropTypes.element.isRequired,
+};
+
+Alert.defaultProps = {
+  error: false,
+};

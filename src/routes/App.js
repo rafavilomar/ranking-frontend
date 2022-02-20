@@ -13,12 +13,31 @@ import ProtectedRoute from "../components/layout/ProtectedRoute";
 function App() {
   return (
     <Switch>
+      {/* <ProtectedRoute /> */}
       <ProtectedRoute requireLogin={false} exact path="/" component={Home} />
-      <ProtectedRoute requireLogin={false} exact path="/login" component={Login} />
-      <ProtectedRoute requireLogin={false} exact path="/signup" component={Signup} />
+      <ProtectedRoute
+        requireLogin={false}
+        exact
+        path="/login"
+        component={Login}
+      />
+      <ProtectedRoute
+        requireLogin={false}
+        exact
+        path="/signup"
+        component={Signup}
+      />
       <ProtectedRoute exact path="/my-profile" component={MyProfile} />
-      <ProtectedRoute exact path="/teacher/:teacherId" component={TeacherProfile} />
-      <ProtectedRoute exact path="/search/:teacherName" component={TeacherList} />
+      <ProtectedRoute
+        exact
+        path="/teacher/:teacherId"
+        component={TeacherProfile}
+      />
+      <ProtectedRoute
+        exact
+        path="/search/:teacherName"
+        component={TeacherList}
+      />
     </Switch>
   );
 }
