@@ -9,21 +9,22 @@ import GeneralContext from "../context/context";
 import AuthService from "../fetcher/services/AuthService";
 
 const Home = () => {
-
   const { token, setToken } = useContext(GeneralContext);
   const twentyMinutes = 20 * 1000 * 60;
 
   const refreshToken = () => {
-    setToken(token)
+    setToken(token);
     setInterval(async () => {
-      const token = await AuthService.refreshToken();
-      setToken(token)
-    }, twentyMinutes)
-  }
+      const newToken = await AuthService.refreshToken();
+      setToken(newToken);
+    }, twentyMinutes);
+  };
 
   useEffect(() => {
-    token && refreshToken();
-  }, [])
+    if (token) {
+      refreshToken();
+    }
+  }, []);
 
   return (
     <div>
@@ -35,9 +36,9 @@ const Home = () => {
               ¿Qué piensas de este profesor?
             </h3>
             <ActionCardUser
-              // img="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
               teacherName="Nombre del Profesor"
-              subject="Asignatura"
+              subject={{ name: "Asignatura" }}
+              idTeacher={1}
             />
           </div>
         </div>

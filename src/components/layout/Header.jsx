@@ -1,19 +1,19 @@
 import React, { useContext } from "react";
 
 import { SearchIcon, UserCircleIcon } from "@heroicons/react/solid";
+import { Link } from "react-router-dom";
 
 import LinkButton from "../buttons/LinkButton";
 import Branch from "./Branch";
-import { Link } from "react-router-dom";
 import GeneralContext from "../../context/context";
 
 const Header = () => {
-
-  const { token, setSearchTeacher, searchTeacher, img } = useContext(GeneralContext);
+  const { token, setSearchTeacher, searchTeacher, img } =
+    useContext(GeneralContext);
   return (
     <header className="shadow-md bg-white py-2 w-full">
       <div className="w-full justify-between items-center inline-flex px-4">
-        {/*---BRAND NAME---*/}
+        {/* ---BRAND NAME--- */}
         <div>
           <Link to="/">
             <Branch />
@@ -33,7 +33,10 @@ const Header = () => {
                 value={searchTeacher}
                 onChange={(e) => setSearchTeacher(e.target.value)}
               />
-              <Link to={`/search/${searchTeacher}`} className="flex items-center justify-center px-4 py-2 bg-gray-100 hover:bg-gray-300">
+              <Link
+                to={`/search/${searchTeacher}`}
+                className="flex items-center justify-center px-4 py-2 bg-gray-100 hover:bg-gray-300"
+              >
                 <SearchIcon className="h-5" />
               </Link>
             </div>
@@ -41,21 +44,22 @@ const Header = () => {
           <div className="flex items-center gap-5">
             {token ? (
               // PROFILE BUTTON
-              <Link to="/my-profile" className="h-12 w-12 flex items-center justify-center rounded-full overflow-hidden hover:shadow-lg hover:border-gray-300" >
+              <Link
+                to="/my-profile"
+                className="h-12 w-12 flex items-center justify-center rounded-full overflow-hidden hover:shadow-lg hover:border-gray-300"
+              >
                 {img ? (
-                  <img
-                    alt="profile"
-                    src={img}
-                  />
+                  <img alt="profile" src={img} />
                 ) : (
                   <UserCircleIcon className="text-gray-500" />
                 )}
               </Link>
-            ) : (<>
-              <LinkButton value="Sign up" href="/signup" />
-              <LinkButton value="Login" style="primary" href="/login" />
-            </>)}
-
+            ) : (
+              <>
+                <LinkButton value="Sign up" href="/signup" />
+                <LinkButton value="Login" style="primary" href="/login" />
+              </>
+            )}
           </div>
         </div>
       </div>

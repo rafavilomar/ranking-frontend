@@ -2,7 +2,6 @@ import config from "../../config";
 import DataService from "../DataService";
 
 class TeacherService {
-
   static async getTeacherInfo(teacherId) {
     const response = await DataService.get(
       `${config.api.domain}/teacher/${teacherId}`
@@ -18,9 +17,7 @@ class TeacherService {
   }
 
   static async getAllTeachers() {
-    const response = await DataService.get(
-      `${config.api.domain}/teacher`
-    );
+    const response = await DataService.get(`${config.api.domain}/teacher`);
     return response;
   }
 }

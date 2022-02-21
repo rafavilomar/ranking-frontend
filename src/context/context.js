@@ -1,4 +1,4 @@
 import { createContext } from "react";
 
-const GeneralContext = createContext()
-export default  GeneralContext;
+const GeneralContext = createContext();
+export default GeneralContext;
