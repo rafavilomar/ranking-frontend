@@ -24,6 +24,7 @@ const Home = () => {
     if (token) {
       refreshToken();
     }
+    document.title = "Ranking";
   }, []);
 
   return (

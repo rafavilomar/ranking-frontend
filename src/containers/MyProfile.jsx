@@ -54,6 +54,7 @@ const MyProfile = () => {
 
   useEffect(() => {
     loadUserInfo();
+    document.title = "Ranking | Profile";
   }, []);
 
   return (

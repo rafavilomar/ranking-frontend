@@ -23,7 +23,7 @@ const CardTeacher = ({ teacher }) => (
         {/* HEAD */}
         <div>
           <h6 className="font-semibold">{teacher.fullname}</h6>
-          <p className="text-gray-600">{teacher.schools[0].name}</p>
+          <p className="text-gray-600">{teacher.schools[0]?.name}</p>
         </div>
         <hr />
         {/* SUBJECT */}

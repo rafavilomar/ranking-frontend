@@ -28,6 +28,7 @@ const TeacherList = () => {
   useEffect(() => {
     searchTeacher();
     getAllTeachers();
+    document.title = "Ranking | Search teacher";
   }, []);
 
   return (

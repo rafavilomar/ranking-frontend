@@ -48,6 +48,7 @@ const Login = () => {
     if (token) {
       history.push("/");
     }
+    document.title = "Ranking | Login";
   }, []);
 
   return (

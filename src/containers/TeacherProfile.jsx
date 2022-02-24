@@ -23,13 +23,14 @@ const TeacherProfile = () => {
 
   const [commentList, setCommentList] = useState([]);
 
+  const { teacherId } = useParams();
+
   const changeTab = () => {
     setComments(!comments);
     setInfo(!info);
   };
 
   const getTeacherInfo = async () => {
-    const { teacherId } = useParams();
     const response = await TeacherService.getTeacherInfo(teacherId);
     setId(response.id);
     setName(response.fullname);
@@ -43,6 +44,7 @@ const TeacherProfile = () => {
 
   useEffect(() => {
     getTeacherInfo();
+    document.title = "Ranking | Teacher profile";
   }, []);
 
   return (
