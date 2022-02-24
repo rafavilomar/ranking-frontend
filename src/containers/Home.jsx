@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CardUser from "../components/Cards.jsx/CardUser";
 
 import Header from "../components/layout/Header";
@@ -10,6 +10,9 @@ import AuthService from "../fetcher/services/AuthService";
 
 const Home = () => {
   const { token, setToken } = useContext(GeneralContext);
+
+  const [topTeacher, setTopTeacher] = useState([]);
+
   const twentyMinutes = 20 * 1000 * 60;
 
   const refreshToken = () => {
@@ -20,9 +23,15 @@ const Home = () => {
     }, twentyMinutes);
   };
 
+  const getTopTeachers = async () => {
+    const response = await AuthService.getTopTeachers();
+    setTopTeacher([...response]);
+  };
+
   useEffect(() => {
     if (token) {
       refreshToken();
+      getTopTeachers();
     }
     document.title = "Ranking";
   }, []);
@@ -49,23 +58,22 @@ const Home = () => {
           Conoce a los mejores
         </h3>
         <div className="mt-3 max-w-7xl mx-auto flex justify-center gap-5 items-center">
-          <CardUser
-            color="bg-gray-400"
-            rate={2}
-            type="SMALL"
-            image="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          />
-          <CardUser
-            color="bg-yellow-400"
-            rate={1}
-            image="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          />
-          <CardUser
-            color="bg-yellow-700"
-            rate={3}
-            type="SMALL"
-            image="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          />
+          {topTeacher.map((teacher, index) => (
+            <CardUser
+              key={teacher.id}
+              color={
+                index + 1 === 1
+                  ? "bg-gray-400"
+                  : index + 1 === 2
+                  ? "bg-yellow-400"
+                  : "bg-yellow-700"
+              }
+              votes={teacher.votes}
+              rate={index + 1}
+              type={index + 1 === 1 ? "NORMAL" : "SMALL"}
+              image={teacher.img}
+            />
+          ))}
         </div>
       </div>
       <Footer />

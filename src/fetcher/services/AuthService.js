@@ -19,5 +19,10 @@ class AuthService {
     const response = await DataService.get(`${config.api.domain}/refreshToken`);
     return response;
   }
+
+  static async getTopTeachers() {
+    const response = await DataService.get(`${config.api.domain}/teacher/top`);
+    return response;
+  }
 }
 export default AuthService;

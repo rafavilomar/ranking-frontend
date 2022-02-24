@@ -40,5 +40,6 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "no-nested-ternary": "off",
   },
 };

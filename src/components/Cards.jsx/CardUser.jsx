@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
+import { UserIcon } from "@heroicons/react/solid";
 
 const CardUser = ({ type, image, rate, color, votes }) => {
   const [className, setClassName] = React.useState();
@@ -22,7 +23,12 @@ const CardUser = ({ type, image, rate, color, votes }) => {
         {rate}
       </span>
       <div className="overflow-hidden max-h-full rounded-xl max-w-full flex items-center justify-center">
-        <img src={image} alt="noe" />
+        {image != null ? (
+          <img src={image} alt="teacherProfile" />
+        ) : (
+          <UserIcon className="bg-gray-500 text-gray-100 h-96 w-96" />
+        )}
+
         {type === "NORMAL" && (
           <div className="absolute bg-white bottom-0 p-4 left-0 right-0 top-auto rounded-bl-xl rounded-br-xl">
             <p className="font-sans">{votes} valoraciones</p>
@@ -36,7 +42,7 @@ export default CardUser;
 
 CardUser.propTypes = {
   type: PropTypes.oneOf(["SMALL", "NORMAL"]),
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   rate: PropTypes.number.isRequired,
   color: PropTypes.string.isRequired,
   votes: PropTypes.number,
@@ -45,4 +51,5 @@ CardUser.propTypes = {
 CardUser.defaultProps = {
   type: "NORMAL",
   votes: null,
+  image: null,
 };
