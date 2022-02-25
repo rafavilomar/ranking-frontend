@@ -31,8 +31,8 @@ const Home = () => {
   useEffect(() => {
     if (token) {
       refreshToken();
-      getTopTeachers();
     }
+    getTopTeachers();
     document.title = "Ranking";
   }, []);
 
