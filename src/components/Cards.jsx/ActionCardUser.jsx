@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import { ThumbUpIcon, ThumbDownIcon, UserIcon } from "@heroicons/react/solid";
+import { ThumbUpIcon, ThumbDownIcon } from "@heroicons/react/solid";
+import Avatar from "react-nice-avatar";
 import Button from "../buttons/Button";
 import IconButton from "../buttons/IconButton";
 import VoteService from "../../fetcher/services/VoteService";
@@ -112,7 +113,7 @@ const ActionCardUser = ({
             {img ? (
               <img src={img} alt="teacherProfile" />
             ) : (
-              <UserIcon className="bg-gray-500 text-gray-100" />
+              <Avatar style={{ height: 385, width: 385 }} shape="square" />
             )}
             {type === "NORMAL" && (
               <div className="absolute bg-white bottom-0 p-4 left-0 right-0 top-auto">

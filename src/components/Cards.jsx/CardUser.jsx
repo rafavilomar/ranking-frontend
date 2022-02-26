@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { UserIcon } from "@heroicons/react/solid";
+import Avatar from "react-nice-avatar";
 
 const CardUser = ({ type, image, rate, color, votes }) => {
   const [className, setClassName] = React.useState();
@@ -18,7 +18,7 @@ const CardUser = ({ type, image, rate, color, votes }) => {
       className={`${className} rounded-xl mt-5 shadow-md relative flex items-center justify-center`}
     >
       <span
-        className={`${color} font-sans text-2xl font-semibold absolute flex justify-center items-center -top-5 left-auto right-auto bottom-auto rounded-br-full rounded-bl-full bg-red-400 w-14 h-14`}
+        className={`${color} font-sans text-2xl font-semibold absolute z-50 flex justify-center items-center -top-5 left-auto right-auto bottom-auto rounded-br-full rounded-bl-full bg-red-400 w-14 h-14`}
       >
         {rate}
       </span>
@@ -26,7 +26,7 @@ const CardUser = ({ type, image, rate, color, votes }) => {
         {image != null ? (
           <img src={image} alt="teacherProfile" />
         ) : (
-          <UserIcon className="bg-gray-500 text-gray-100 h-96 w-96" />
+          <Avatar style={{ height: 385, width: 385 }} shape="square" />
         )}
 
         {type === "NORMAL" && (

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import { UserCircleIcon } from "@heroicons/react/solid";
+import Avatar from "react-nice-avatar";
 
 const CardTeacher = ({ teacher }) => (
   <Link to={`/teacher/${teacher.id}`}>
@@ -15,7 +15,7 @@ const CardTeacher = ({ teacher }) => (
         {teacher.img ? (
           <img alt="profile" src={teacher.img} />
         ) : (
-          <UserCircleIcon className="h-24 w-24 text-gray-500" />
+          <Avatar style={{ width: 96, height: 96 }} />
         )}
       </div>
       {/* INFO */}

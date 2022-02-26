@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Moment from "react-moment";
 import "moment/locale/es";
-import { UserCircleIcon } from "@heroicons/react/solid";
+import Avatar from "react-nice-avatar";
 
 import ActionCardUser from "../components/Cards.jsx/ActionCardUser";
 import Footer from "../components/layout/Footer";
@@ -102,7 +102,7 @@ const TeacherProfile = () => {
                     {comment.users.img ? (
                       <img alt="profile" src={comment.users.img} />
                     ) : (
-                      <UserCircleIcon className="h-24 w-24 text-gray-500" />
+                      <Avatar style={{ width: 86, height: 86 }} />
                     )}
                   </div>
                   <div key={comment.id} className="font-sans">

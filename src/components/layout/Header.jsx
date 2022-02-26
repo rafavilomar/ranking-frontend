@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 
-import { SearchIcon, UserCircleIcon } from "@heroicons/react/solid";
+import { SearchIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
+import Avatar from "react-nice-avatar";
 
 import LinkButton from "../buttons/LinkButton";
 import Branch from "./Branch";
@@ -51,7 +52,7 @@ const Header = () => {
                 {img ? (
                   <img alt="profile" src={img} />
                 ) : (
-                  <UserCircleIcon className="text-gray-500" />
+                  <Avatar style={{ width: "100%", height: "100%" }} />
                 )}
               </Link>
             ) : (
