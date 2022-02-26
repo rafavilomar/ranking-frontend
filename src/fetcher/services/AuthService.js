@@ -21,7 +21,12 @@ class AuthService {
   }
 
   static async getTopTeachers() {
-    const response = await DataService.get(`${config.api.domain}/teacher/top`);
+    const response = await DataService.get(`${config.api.domain}/top`);
+    return response;
+  }
+
+  static async getRandomTeachers() {
+    const response = await DataService.get(`${config.api.domain}/getRandom`);
     return response;
   }
 }
