@@ -48,7 +48,7 @@ const Home = () => {
     show && (
       <div>
         <Header />
-        <div className="max-w-7xl mx-auto mt-14">
+        <div className="max-w-7xl mx-auto mt-14 px-16">
           <div className="flex justify-center">
             <div className="flex items-center justify-center flex-col">
               <h3 className="font-sans font-semibold text-center text-3xl mb-5">
@@ -66,9 +66,10 @@ const Home = () => {
           <h3 className="font-sans font-semibold text-center text-3xl">
             Conoce a los mejores
           </h3>
-          <div className="mt-3 max-w-7xl mx-auto flex justify-center gap-5 items-center">
+          <div className="mt-3 max-w-4xl mx-auto gap-2 grid grid-cols-1 md:grid-cols-3">
             {topTeacher.map((teacher, index) => (
               <CardUser
+                idTeacher={teacher.id}
                 key={teacher.id}
                 color={
                   index + 1 === 1
@@ -79,7 +80,7 @@ const Home = () => {
                 }
                 votes={Number(teacher.votes)}
                 rate={index + 1}
-                type={index + 1 === 1 ? "NORMAL" : "SMALL"}
+                type="SMALL"
                 image={teacher.img}
               />
             ))}

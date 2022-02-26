@@ -34,11 +34,11 @@ const TeacherList = () => {
   return (
     <>
       <Header />
-      <div className="max-w-7xl mx-auto flex flex-col gap-5 mt-6">
+      <div className="max-w-7xl mx-auto flex flex-col gap-5 mt-6 px-16">
         {searchResult.length > 0 ? (
           <>
             <h3 className="text-xl font-semibold ">Resultados encontrados</h3>
-            <div className="gap-6 grid grid-cols-4">
+            <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
               {searchResult.map((teacher) => (
                 <CardTeacher key={teacher.id} teacher={teacher} />
               ))}
@@ -54,7 +54,7 @@ const TeacherList = () => {
         )}
         <hr />
         <h3 className="text-xl font-semibold ">Quizas te pueda interesar...</h3>
-        <div className="gap-6 grid grid-cols-4">
+        <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {teacherList.map((teacher) => (
             <CardTeacher key={teacher.id} teacher={teacher} />
           ))}

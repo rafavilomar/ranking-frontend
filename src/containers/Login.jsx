@@ -34,7 +34,7 @@ const Login = () => {
     const response = await AuthService.login(data);
     if (response) {
       setContext(response);
-      history.push("/");
+      history.push("/schools");
       setLoading(false);
     } else {
       showError();
