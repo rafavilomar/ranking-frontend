@@ -1,7 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import { ThumbUpIcon, ThumbDownIcon, UserIcon } from "@heroicons/react/solid";
+import { ThumbUpIcon, ThumbDownIcon } from "@heroicons/react/solid";
+import Avatar from "react-nice-avatar";
 import Button from "../buttons/Button";
 import IconButton from "../buttons/IconButton";
 import VoteService from "../../fetcher/services/VoteService";
@@ -18,8 +20,10 @@ const ActionCardUser = ({
   idTeacher,
 }) => {
   const { id, token } = useContext(GeneralContext);
+  const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showButton, setShowButton] = useState(true);
 
   // vote data
   const [comment, setCommet] = useState("");
@@ -38,23 +42,27 @@ const ActionCardUser = ({
 
   const sendVote = async () => {
     setLoading(true);
-    const body = {
-      vote,
-      comment,
-      teacherId: idTeacher,
-      usersId: id,
-    };
-    const response = await VoteService.makeVote(body);
-    if (response) {
-      window.location.reload();
+    if (token) {
+      const body = {
+        vote,
+        comment,
+        teacherId: idTeacher,
+        usersId: id,
+      };
+      const response = await VoteService.makeVote(body);
+      if (response) {
+        window.location.reload();
+      }
+    } else {
+      history.push("/login");
     }
   };
 
-  const checkVote = () => {
+  const checkVote = async () => {
     if (token) {
-      return VoteService.checkVote(idTeacher, id);
+      const response = await VoteService.checkVote(idTeacher, id);
+      setShowButton(!response);
     }
-    return false;
   };
 
   const modalBox = () => (
@@ -84,6 +92,10 @@ const ActionCardUser = ({
     </div>
   );
 
+  useEffect(() => {
+    checkVote();
+  }, []);
+
   return (
     <>
       {showModal && modalBox()}
@@ -101,18 +113,20 @@ const ActionCardUser = ({
             {img ? (
               <img src={img} alt="teacherProfile" />
             ) : (
-              <UserIcon className="bg-gray-500 text-gray-100" />
+              <Avatar style={{ height: 385, width: 385 }} shape="square" />
             )}
             {type === "NORMAL" && (
               <div className="absolute bg-white bottom-0 p-4 left-0 right-0 top-auto">
-                <h6 className="font-sans font-semibold text-lg">
-                  {teacherName}
-                </h6>
+                <Link to={`/teacher/${idTeacher}`}>
+                  <h6 className="font-sans font-semibold text-lg">
+                    {teacherName}
+                  </h6>
+                </Link>
                 <p className="font-sans">{subject?.name}</p>
               </div>
             )}
           </div>
-          {!checkVote() && (
+          {showButton && (
             <div className="flex items-center gap-6 mt-5 w-96">
               <IconButton funtion={() => {}}>
                 <ThumbUpIcon

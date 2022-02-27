@@ -9,11 +9,11 @@ import MyProfile from "../containers/MyProfile";
 import TeacherProfile from "../containers/TeacherProfile";
 import TeacherList from "../containers/TeacherList";
 import ProtectedRoute from "../components/layout/ProtectedRoute";
+import SchoolList from "../containers/SchoolList";
 
 function App() {
   return (
     <Switch>
-      {/* <ProtectedRoute /> */}
       <ProtectedRoute requireLogin={false} exact path="/" component={Home} />
       <ProtectedRoute
         requireLogin={false}
@@ -38,6 +38,7 @@ function App() {
         path="/search/:teacherName"
         component={TeacherList}
       />
+      <ProtectedRoute exact path="/schools" component={SchoolList} />
     </Switch>
   );
 }

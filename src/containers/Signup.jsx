@@ -67,6 +67,7 @@ const Signup = () => {
     if (token) {
       history.push("/");
     }
+    document.title = "Ranking | Sign up";
   }, [token, history]);
 
   return (

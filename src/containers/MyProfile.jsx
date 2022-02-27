@@ -54,12 +54,13 @@ const MyProfile = () => {
 
   useEffect(() => {
     loadUserInfo();
+    document.title = "Ranking | Profile";
   }, []);
 
   return (
     <>
       <Header />
-      <div className="max-w-7xl mx-auto mt-7 grid md:grid-cols-3 sm:grid-cols-1 gap-2 mb-14">
+      <div className="max-w-7xl px-16 mx-auto mt-7 grid md:grid-cols-3 sm:grid-cols-1 gap-2 mb-14">
         {/* Image */}
         <div className="flex justify-center">
           <div

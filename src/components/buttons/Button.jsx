@@ -38,7 +38,7 @@ export default Button;
 
 Button.propTypes = {
   value: PropTypes.string.isRequired,
-  funtion: PropTypes.func.isRequired,
+  funtion: PropTypes.func,
   type: PropTypes.oneOf(["button", "submit"]),
   loading: PropTypes.bool,
   style: PropTypes.oneOf(["normal", "tertiary", "primary"]),
@@ -50,4 +50,5 @@ Button.defaultProps = {
   loading: false,
   style: "normal",
   full: false,
+  funtion: () => {},
 };

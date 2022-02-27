@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Moment from "react-moment";
 import "moment/locale/es";
-import { UserCircleIcon } from "@heroicons/react/solid";
+import Avatar from "react-nice-avatar";
+import { ThumbDownIcon, ThumbUpIcon } from "@heroicons/react/solid";
 
 import ActionCardUser from "../components/Cards.jsx/ActionCardUser";
 import Footer from "../components/layout/Footer";
@@ -23,13 +24,14 @@ const TeacherProfile = () => {
 
   const [commentList, setCommentList] = useState([]);
 
+  const { teacherId } = useParams();
+
   const changeTab = () => {
     setComments(!comments);
     setInfo(!info);
   };
 
   const getTeacherInfo = async () => {
-    const { teacherId } = useParams();
     const response = await TeacherService.getTeacherInfo(teacherId);
     setId(response.id);
     setName(response.fullname);
@@ -43,12 +45,13 @@ const TeacherProfile = () => {
 
   useEffect(() => {
     getTeacherInfo();
+    document.title = "Ranking | Teacher profile";
   }, []);
 
   return (
     <>
       <Header />
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-16">
         {/* Main content */}
         <div className="flex justify-center">
           <div className="mt-10 mb-10">
@@ -100,7 +103,7 @@ const TeacherProfile = () => {
                     {comment.users.img ? (
                       <img alt="profile" src={comment.users.img} />
                     ) : (
-                      <UserCircleIcon className="h-24 w-24 text-gray-500" />
+                      <Avatar style={{ width: 86, height: 86 }} />
                     )}
                   </div>
                   <div key={comment.id} className="font-sans">
@@ -110,16 +113,30 @@ const TeacherProfile = () => {
                       </h6>
                       <span className="text-gray-600">
                         •
-                        <Moment locale="es" fromNow date={comment.timestamp} />
+                        <Moment
+                          locale="es"
+                          className="ml-1"
+                          fromNow
+                          date={comment.timestamp}
+                        />
                       </span>
+                      {comment.vote ? (
+                        <ThumbUpIcon className="text-gray-600 h-4 w-4" />
+                      ) : (
+                        <ThumbDownIcon className="text-gray-600 h-3 w-3" />
+                      )}
                     </div>
-                    <p className="text-gray-800 text-sm">{comment.comment}</p>
+                    <p className="text-gray-800 text-sm">
+                      {comment.comment || (
+                        <span className="italic">Sin comentario...</span>
+                      )}
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
           )}
-          {info && <h3>More Info</h3>}
+          {info && <h3>Proximamente..</h3>}
         </div>
       </div>
       <Footer />
