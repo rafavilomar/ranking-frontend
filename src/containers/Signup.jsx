@@ -53,7 +53,7 @@ const Signup = () => {
 
       if (response) {
         setContext(response);
-        history.push("/");
+        history.push("/schools");
         setLoading(false);
       } else {
         showError();
@@ -68,7 +68,7 @@ const Signup = () => {
       history.push("/");
     }
     document.title = "Ranking | Sign up";
-  }, [token, history]);
+  }, []);
 
   return (
     <div className="flex flex-col gap-2 justify-center items-center absolute top-0 left-0 right-0 bottom-0">

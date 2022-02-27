@@ -1,4 +1,4 @@
-import React, { useMemo, useReducer } from "react";
+import React, { useReducer } from "react";
 import PropTypes from "prop-types";
 import GeneralContext from "./context";
 import GeneralReducer from "./reducer";
@@ -9,7 +9,7 @@ function GeneralState({ children }) {
     id: localStorage.getItem("id") || null,
     username: localStorage.getItem("username") || null,
     img: localStorage.getItem("img") || null,
-    token: localStorage.getItem("token") || null,
+    token: localStorage.getItem("token2") || null,
     searchTeacher: "",
   };
 
@@ -20,6 +20,7 @@ function GeneralState({ children }) {
     localStorage.setItem("username", data.username);
     localStorage.setItem("img", data.img);
     localStorage.setItem("token", data.token);
+    localStorage.setItem("token2", data.token);
     dispatch({
       type: SET_CONTEXT,
       payload: data,
@@ -35,7 +36,7 @@ function GeneralState({ children }) {
 
   const setToken = (token) => {
     if (token) {
-      localStorage.setItem("token", token);
+      localStorage.setItem("token2", token);
       dispatch({
         type: SET_TOKEN,
         payload: token,
@@ -43,18 +44,10 @@ function GeneralState({ children }) {
     }
   };
 
-  const providerValue = useMemo(
-    () => ({
-      setToken,
-      setSearchTeacher,
-      setContext,
-      ...state,
-    }),
-    []
-  );
-
   return (
-    <GeneralContext.Provider value={providerValue}>
+    <GeneralContext.Provider
+      value={{ setToken, setSearchTeacher, setContext, ...state }}
+    >
       {children}
     </GeneralContext.Provider>
   );

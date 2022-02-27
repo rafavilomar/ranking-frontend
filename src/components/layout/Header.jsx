@@ -11,6 +11,7 @@ import GeneralContext from "../../context/context";
 const Header = () => {
   const { token, setSearchTeacher, searchTeacher, img } =
     useContext(GeneralContext);
+
   return (
     <header className="shadow-md bg-white py-2 w-full">
       <div className="w-full justify-between items-center inline-flex px-4">
