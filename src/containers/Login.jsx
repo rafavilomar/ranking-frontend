@@ -9,8 +9,7 @@ import GeneralContext from "../context/context";
 import AuthService from "../fetcher/services/AuthService";
 
 const Login = () => {
-
-  let history = useHistory();
+  const history = useHistory();
   const { token, setContext } = useContext(GeneralContext);
 
   const [username, setUsername] = React.useState("");
@@ -18,17 +17,24 @@ const Login = () => {
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
+  const showError = () => {
+    setError(true);
+    setTimeout(() => {
+      setError(false);
+    }, 5000);
+  };
+
   const login = async (event) => {
     event.preventDefault();
     setLoading(true);
     const data = {
-      username: username,
-      password: password
-    }
+      username,
+      password,
+    };
     const response = await AuthService.login(data);
     if (response) {
       setContext(response);
-      history.push("/");
+      history.push("/schools");
       setLoading(false);
     } else {
       showError();
@@ -36,34 +42,52 @@ const Login = () => {
       setUsername("");
       setPassword("");
     }
-  }
-
-  const showError = () => {
-    setError(true)
-    setTimeout(() => {
-      setError(false)
-    }, 5000);
-  }
+  };
 
   useEffect(() => {
-    token && history.push("/")
-  }, [])
-
+    if (token) {
+      history.push("/");
+    }
+    document.title = "Ranking | Login";
+  }, []);
 
   return (
     <div className="flex flex-col gap-2 justify-center items-center absolute top-0 left-0 right-0 bottom-0">
       <Branch />
       <div className="w-80 flex flex-col gap-2">
         {error && (
-          <Alert title="Error al intentar iniciar sesión" error >
-            <p> <b>Usuario</b> o <b>contraseña</b> incorrectos. Por favor vuelva a intentarlo.</p>
+          <Alert title="Error al intentar iniciar sesión" error>
+            <p>
+              {" "}
+              <b>Usuario</b> o <b>contraseña</b> incorrectos. Por favor vuelva a
+              intentarlo.
+            </p>
           </Alert>
         )}
         <div className="mt-2 bg-white shadow-md rounded-md px-6 py-4 overflow-hidden">
-          <form className="gap-4 flex flex-col" onSubmit={login} >
-            <TextInput value={username} name="username" label="Usuario" type="text" required onChange={(e) => setUsername(e.target.value)} />
-            <TextInput value={password} name="password" label="Contraseña" type="password" required onChange={(e) => setPassword(e.target.value)} />
-            <Button loading={loading} type="submit" value="Iniciar Sesión" style="primary" />
+          <form className="gap-4 flex flex-col" onSubmit={login}>
+            <TextInput
+              value={username}
+              name="username"
+              label="Usuario"
+              type="text"
+              required
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <TextInput
+              value={password}
+              name="password"
+              label="Contraseña"
+              type="password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Button
+              loading={loading}
+              type="submit"
+              value="Iniciar Sesión"
+              style="primary"
+            />
           </form>
         </div>
       </div>

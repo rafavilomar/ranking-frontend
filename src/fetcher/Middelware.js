@@ -1,11 +1,9 @@
-export const middelware = (response) => {
-    if (response.status === 401) {
-        localStorage.removeItem("id");
-        localStorage.removeItem("username");
-        localStorage.removeItem("img");
-        localStorage.removeItem("token");
+import removeAll from "../utils/localStorage";
 
-        window.location.reload();
-    }
-
-}
+const middelware = (response) => {
+  if (response?.status === 401) {
+    removeAll();
+    window.location.reload();
+  }
+};
+export default middelware;
