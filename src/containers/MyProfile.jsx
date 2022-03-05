@@ -8,6 +8,7 @@ import {
   ThumbDownIcon,
 } from "@heroicons/react/solid";
 import { useHistory } from "react-router-dom";
+import Avatar from "react-nice-avatar";
 
 import Button from "../components/buttons/Button";
 import TextInput from "../components/forms/TextInput";
@@ -71,7 +72,7 @@ const MyProfile = () => {
               {img ? (
                 <img src={img} alt="profile" />
               ) : (
-                <UserIcon className="bg-gray-500 text-gray-100" />
+                <Avatar style={{ height: 240, width: 240 }} shape="square" />
               )}
               <button
                 type="button"
