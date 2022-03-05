@@ -77,6 +77,8 @@ const ActionCardUser = ({
             className="w-full text-gray-600 focus:shadow-none focus:outline-none border border-gray-400 py-1 px-2 rounded"
             placeholder="Mensaje (Opcional)"
             rows={5}
+            value={comment}
+            onChange={(e) => setCommet(e.target.value)}
           />
         </div>
         <div className="flex justify-between">
@@ -107,13 +109,13 @@ const ActionCardUser = ({
           </p>
         </div>
       )}
-      <div className="flex gap-4">
+      <div className="flex gap-4 flex-wrap justify-center">
         <div>
-          <div className="w-96 h-96 overflow-hidden shadow-md flex items-center justify-center rounded-xl relative">
+          <div className="w-80 h-80 overflow-hidden mx-auto shadow-md flex items-center justify-center rounded-xl relative">
             {img ? (
               <img src={img} alt="teacherProfile" />
             ) : (
-              <Avatar style={{ height: 385, width: 385 }} shape="square" />
+              <Avatar style={{ height: 320, width: 320 }} shape="square" />
             )}
             {type === "NORMAL" && (
               <div className="absolute bg-white bottom-0 p-4 left-0 right-0 top-auto">
@@ -127,7 +129,7 @@ const ActionCardUser = ({
             )}
           </div>
           {showButton && (
-            <div className="flex items-center gap-6 mt-5 w-96">
+            <div className="flex items-center gap-6 mt-5 w-80">
               <IconButton funtion={() => {}}>
                 <ThumbUpIcon
                   className="text-white h-6"
@@ -140,12 +142,14 @@ const ActionCardUser = ({
                   onClick={() => openModal(false)}
                 />
               </IconButton>
-              <Button value="No lo reconozco" full funtion={() => {}} />
+              {false && (
+                <Button value="No lo reconozco" full funtion={() => {}} />
+              )}
             </div>
           )}
         </div>
         {type === "FULL" && (
-          <div className="flex flex-col gap-2">
+          <div className="flex sm:flex-col sm:justify-start justify-between gap-2 sm:w-auto w-full">
             <span className="flex gap-2 items-center font-sans">
               <ThumbUpIcon className="text-green-700 h-8" />
               {positiveVotes} Valoraciones

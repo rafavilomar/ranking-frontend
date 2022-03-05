@@ -1,13 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import Moment from "react-moment";
 import "moment/locale/es";
-import {
-  PencilIcon,
-  UserIcon,
-  ThumbUpIcon,
-  ThumbDownIcon,
-} from "@heroicons/react/solid";
+import { PencilIcon, ThumbUpIcon, ThumbDownIcon } from "@heroicons/react/solid";
 import { useHistory } from "react-router-dom";
+import Avatar from "react-nice-avatar";
 
 import Button from "../components/buttons/Button";
 import TextInput from "../components/forms/TextInput";
@@ -60,25 +56,27 @@ const MyProfile = () => {
   return (
     <>
       <Header />
-      <div className="max-w-7xl px-16 mx-auto mt-7 grid md:grid-cols-3 sm:grid-cols-1 gap-2 mb-14">
+      <div className="max-w-7xl sm:px-16 mx-auto mt-7 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-x-2 gap-y-2 mb-14">
         {/* Image */}
         <div className="flex justify-center">
           <div
-            className="flex flex-col gap-2 bg-white p-2 rounded-md content-start"
+            className="sm:w-auto w-full flex flex-col gap-2 bg-white p-2 rounded-md content-start"
             style={{ height: "fit-content" }}
           >
-            <div className="relative h-60 w-60 rounded-lg overflow-hidden flex items-center justify-center">
+            <div className="relative h-60 w-60 m-auto rounded-lg overflow-hidden flex items-center justify-center">
               {img ? (
                 <img src={img} alt="profile" />
               ) : (
-                <UserIcon className="bg-gray-500 text-gray-100" />
+                <Avatar style={{ height: 240, width: 240 }} shape="square" />
               )}
-              <button
-                type="button"
-                className="absolute right-2 bottom-2 z-10 bg-gray-600 p-2 rounded-md "
-              >
-                <PencilIcon className="text-white h-5" />
-              </button>
+              {false && (
+                <button
+                  type="button"
+                  className="absolute right-2 bottom-2 z-10 bg-gray-600 p-2 rounded-md "
+                >
+                  <PencilIcon className="text-white h-5" />
+                </button>
+              )}
             </div>
             {/* Tabs */}
             <div className="flex flex-col gap-3">
@@ -127,30 +125,40 @@ const MyProfile = () => {
                   </h3>
                   <hr />
                 </div>
-                <TextInput label="Usuario" name="username" value={username} />
                 <TextInput
+                  disabled
+                  label="Usuario"
+                  name="username"
+                  value={username}
+                />
+                <TextInput
+                  disabled
                   label="Correo electrónico"
                   name="email"
                   type="email"
                   value={email}
                 />
-                <div>
-                  <Button value="Actualizar perfil" />
-                </div>
+                {false && (
+                  <div>
+                    <Button value="Actualizar perfil" />
+                  </div>
+                )}
               </section>
-              <section className="mt-8 flex flex-col gap-4">
-                <div className="flex flex-col gap-2">
-                  <h3 className="font-sans font-semibold text-xl">
-                    Contraseña
-                  </h3>
-                  <hr />
-                </div>
-                <TextInput label="Nueva contraseña" />
-                <TextInput label="Repetir contraseña" disabled />
-                <div>
-                  <Button value="Cambiar contraseña" />
-                </div>
-              </section>
+              {false && (
+                <section className="mt-8 flex flex-col gap-4">
+                  <div className="flex flex-col gap-2">
+                    <h3 className="font-sans font-semibold text-xl">
+                      Contraseña
+                    </h3>
+                    <hr />
+                  </div>
+                  <TextInput label="Nueva contraseña" />
+                  <TextInput label="Repetir contraseña" disabled />
+                  <div>
+                    <Button value="Cambiar contraseña" />
+                  </div>
+                </section>
+              )}
             </>
           )}
           {/* Activities */}
@@ -182,7 +190,11 @@ const MyProfile = () => {
                         <Moment locale="es" fromNow date={vote.timestamp} />
                       </span>
                     </div>
-                    {vote.comment && <p className="text-sm">{vote.comment}</p>}
+                    {vote.comment ? (
+                      <p className="text-sm">{vote.comment}</p>
+                    ) : (
+                      <span className="text-sm italic">Sin comentario...</span>
+                    )}
                   </div>
                 </div>
               ))}
