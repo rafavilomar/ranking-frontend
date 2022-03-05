@@ -17,9 +17,7 @@ const Header = () => {
       <div className="w-full justify-between items-center inline-flex px-4">
         {/* ---BRAND NAME--- */}
         <div>
-          <Link to="/">
-            <Branch />
-          </Link>
+          <Branch />
         </div>
 
         <div className="gap-5 w-full flex justify-end lg:48">
