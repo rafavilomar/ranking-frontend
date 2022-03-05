@@ -13,9 +13,10 @@ const ProtectedRoute = ({ exact, path, component, requireLogin }) => {
   useEffect(() => {
     if (requireLogin && !token) {
       history.push("/login");
+    } else {
+      setShow(true);
     }
-    setShow(true);
-  }, []);
+  }, [component]);
 
   return <Route exact={exact} path={path} component={show && component} />;
 };

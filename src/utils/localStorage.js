@@ -1,7 +1,4 @@
 const removeAll = () => {
-  localStorage.removeItem("id");
-  localStorage.removeItem("username");
-  localStorage.removeItem("img");
-  localStorage.removeItem("token");
+  window.localStorage.clear();
 };
 export default removeAll;

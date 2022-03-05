@@ -41,5 +41,6 @@ module.exports = {
       },
     ],
     "no-nested-ternary": "off",
+    "react/jsx-no-constructed-context-values": "off",
   },
 };
