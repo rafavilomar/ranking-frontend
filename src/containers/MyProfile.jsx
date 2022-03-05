@@ -69,12 +69,14 @@ const MyProfile = () => {
               ) : (
                 <Avatar style={{ height: 240, width: 240 }} shape="square" />
               )}
-              <button
-                type="button"
-                className="absolute right-2 bottom-2 z-10 bg-gray-600 p-2 rounded-md "
-              >
-                <PencilIcon className="text-white h-5" />
-              </button>
+              {false && (
+                <button
+                  type="button"
+                  className="absolute right-2 bottom-2 z-10 bg-gray-600 p-2 rounded-md "
+                >
+                  <PencilIcon className="text-white h-5" />
+                </button>
+              )}
             </div>
             {/* Tabs */}
             <div className="flex flex-col gap-3">
@@ -123,30 +125,40 @@ const MyProfile = () => {
                   </h3>
                   <hr />
                 </div>
-                <TextInput label="Usuario" name="username" value={username} />
                 <TextInput
+                  disabled
+                  label="Usuario"
+                  name="username"
+                  value={username}
+                />
+                <TextInput
+                  disabled
                   label="Correo electrónico"
                   name="email"
                   type="email"
                   value={email}
                 />
-                <div>
-                  <Button value="Actualizar perfil" />
-                </div>
+                {false && (
+                  <div>
+                    <Button value="Actualizar perfil" />
+                  </div>
+                )}
               </section>
-              <section className="mt-8 flex flex-col gap-4">
-                <div className="flex flex-col gap-2">
-                  <h3 className="font-sans font-semibold text-xl">
-                    Contraseña
-                  </h3>
-                  <hr />
-                </div>
-                <TextInput label="Nueva contraseña" />
-                <TextInput label="Repetir contraseña" disabled />
-                <div>
-                  <Button value="Cambiar contraseña" />
-                </div>
-              </section>
+              {false && (
+                <section className="mt-8 flex flex-col gap-4">
+                  <div className="flex flex-col gap-2">
+                    <h3 className="font-sans font-semibold text-xl">
+                      Contraseña
+                    </h3>
+                    <hr />
+                  </div>
+                  <TextInput label="Nueva contraseña" />
+                  <TextInput label="Repetir contraseña" disabled />
+                  <div>
+                    <Button value="Cambiar contraseña" />
+                  </div>
+                </section>
+              )}
             </>
           )}
           {/* Activities */}
@@ -178,7 +190,11 @@ const MyProfile = () => {
                         <Moment locale="es" fromNow date={vote.timestamp} />
                       </span>
                     </div>
-                    {vote.comment && <p className="text-sm">{vote.comment}</p>}
+                    {vote.comment ? (
+                      <p className="text-sm">{vote.comment}</p>
+                    ) : (
+                      <span className="text-sm italic">Sin comentario...</span>
+                    )}
                   </div>
                 </div>
               ))}
