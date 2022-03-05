@@ -142,7 +142,9 @@ const ActionCardUser = ({
                   onClick={() => openModal(false)}
                 />
               </IconButton>
-              <Button value="No lo reconozco" full funtion={() => {}} />
+              {false && (
+                <Button value="No lo reconozco" full funtion={() => {}} />
+              )}
             </div>
           )}
         </div>
