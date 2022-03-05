@@ -56,14 +56,14 @@ const MyProfile = () => {
   return (
     <>
       <Header />
-      <div className="max-w-7xl px-16 mx-auto mt-7 grid md:grid-cols-3 sm:grid-cols-1 gap-2 mb-14">
+      <div className="max-w-7xl sm:px-16 mx-auto mt-7 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-x-2 gap-y-2 mb-14">
         {/* Image */}
         <div className="flex justify-center">
           <div
-            className="flex flex-col gap-2 bg-white p-2 rounded-md content-start"
+            className="sm:w-auto w-full flex flex-col gap-2 bg-white p-2 rounded-md content-start"
             style={{ height: "fit-content" }}
           >
-            <div className="relative h-60 w-60 rounded-lg overflow-hidden flex items-center justify-center">
+            <div className="relative h-60 w-60 m-auto rounded-lg overflow-hidden flex items-center justify-center">
               {img ? (
                 <img src={img} alt="profile" />
               ) : (

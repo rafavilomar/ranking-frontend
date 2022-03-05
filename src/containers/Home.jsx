@@ -62,30 +62,32 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="mt-20 mb-10">
-          <h3 className="font-sans font-semibold text-center text-3xl">
-            Conoce a los mejores
-          </h3>
-          <div className="mt-3 max-w-4xl mx-auto gap-2 grid grid-cols-1 md:grid-cols-3">
-            {topTeacher.map((teacher, index) => (
-              <CardUser
-                idTeacher={teacher.id}
-                key={teacher.id}
-                color={
-                  index + 1 === 1
-                    ? "bg-gray-400"
-                    : index + 1 === 2
-                    ? "bg-yellow-400"
-                    : "bg-yellow-700"
-                }
-                votes={Number(teacher.votes)}
-                rate={index + 1}
-                type="SMALL"
-                image={teacher.img}
-              />
-            ))}
+        {topTeacher.length > 0 && (
+          <div className="mt-20 mb-10">
+            <h3 className="font-sans font-semibold text-center text-3xl">
+              Conoce a los mejores
+            </h3>
+            <div className="mt-3 max-w-4xl mx-auto gap-2 grid grid-cols-1 md:grid-cols-3">
+              {topTeacher.map((teacher, index) => (
+                <CardUser
+                  idTeacher={teacher.id}
+                  key={teacher.id}
+                  color={
+                    index + 1 === 1
+                      ? "bg-gray-400"
+                      : index + 1 === 2
+                      ? "bg-yellow-400"
+                      : "bg-yellow-700"
+                  }
+                  votes={Number(teacher.votes)}
+                  rate={index + 1}
+                  type="SMALL"
+                  image={teacher.img}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
         <Footer />
       </div>
     )

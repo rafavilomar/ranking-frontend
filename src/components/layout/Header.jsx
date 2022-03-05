@@ -14,13 +14,13 @@ const Header = () => {
 
   return (
     <header className="shadow-md bg-white py-2 w-full">
-      <div className="w-full justify-between items-center inline-flex px-4">
+      <div className="sm:gap-5 gap-2 w-full justify-between items-center inline-flex px-4">
         {/* ---BRAND NAME--- */}
         <div>
           <Branch />
         </div>
 
-        <div className="gap-5 w-full flex justify-end lg:48">
+        <div className="sm:gap-5 gap-2 w-full flex justify-end lg:48">
           {token && (
             // SEARCH BOX
             <div className="max-w-md w-full flex overflow-hidden rounded-md ">

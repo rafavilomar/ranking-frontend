@@ -39,7 +39,7 @@ const TeacherList = () => {
   return (
     <>
       <Header />
-      <div className="max-w-7xl mx-auto flex flex-col gap-5 mt-6 px-16">
+      <div className="max-w-7xl mx-auto flex flex-col gap-5 mt-6 sm:px-16 px-4">
         {loadingSearchResult ? (
           <div className="flex justify-center">
             <div className="w-10 h-10">

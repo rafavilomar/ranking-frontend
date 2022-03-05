@@ -51,9 +51,9 @@ const TeacherProfile = () => {
   return (
     <>
       <Header />
-      <div className="max-w-7xl mx-auto px-16">
+      <div className="max-w-7xl mx-auto">
         {/* Main content */}
-        <div className="flex justify-center">
+        <div className="flex justify-center sm:px-16 px-4">
           <div className="mt-10 mb-10">
             <ActionCardUser
               type="FULL"
@@ -68,7 +68,7 @@ const TeacherProfile = () => {
           </div>
         </div>
         {/* Tabs */}
-        <div className="bg-white p-3 rounded-md flex gap-3">
+        <div className="bg-white p-3 rounded-md flex gap-3 sm:mx-16">
           <button
             type="button"
             className={`py-2 px-4 rounded-md font-semibold text-md ${
@@ -95,7 +95,7 @@ const TeacherProfile = () => {
           {comments && (
             <div className="flex flex-col gap-2">
               {commentList.map((comment) => (
-                <div key={comment.id} className="flex gap-4 p-2">
+                <div key={comment.id} className="flex gap-4 sm:px-16 p-2">
                   <div
                     style={{ maxHeight: 70, maxWidth: 70 }}
                     className="flex items-center justify-center rounded-full overflow-hidden"
@@ -136,7 +136,7 @@ const TeacherProfile = () => {
               ))}
             </div>
           )}
-          {info && <h3>Proximamente..</h3>}
+          {info && <h3 className="italic sm:px-16 p-4">Proximamente...</h3>}
         </div>
       </div>
       <Footer />
