@@ -1,12 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Moment from "react-moment";
 import "moment/locale/es";
-import {
-  PencilIcon,
-  UserIcon,
-  ThumbUpIcon,
-  ThumbDownIcon,
-} from "@heroicons/react/solid";
+import { PencilIcon, ThumbUpIcon, ThumbDownIcon } from "@heroicons/react/solid";
 import { useHistory } from "react-router-dom";
 import Avatar from "react-nice-avatar";
 
