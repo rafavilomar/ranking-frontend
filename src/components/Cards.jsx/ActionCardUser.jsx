@@ -77,6 +77,8 @@ const ActionCardUser = ({
             className="w-full text-gray-600 focus:shadow-none focus:outline-none border border-gray-400 py-1 px-2 rounded"
             placeholder="Mensaje (Opcional)"
             rows={5}
+            value={comment}
+            onChange={(e) => setCommet(e.target.value)}
           />
         </div>
         <div className="flex justify-between">
