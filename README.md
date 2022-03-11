@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# Ranking
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ranking is a platform for students by students where users can express their opinions and thoughts about teachers, making votes and writing optional comments.
 
-## Available Scripts
+This repository is the frontend side for the platform, but if you want to run the project locally you need to run the backend side also. 
 
-In the project directory, you can run:
+You can clone the backend project and see more details about the API [here](https://github.com/rafavilomar/ranking-backend).
 
-### `yarn start`
+## Why Ranking
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The reason behind Ranking, and to be specific about this repository, is because I was looking for an excuse to test and learn to use tools like [Tailwind CSS](https://tailwindcss.com/docs/installation), [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Production
+[https://ranking-frontend.vercel.app/](https://ranking-frontend.vercel.app/)
 
-### `yarn test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Use the package manager npm to install all dependencies succefully.
+```bash
+npm install
+```
 
-### `yarn build`
+## Environment Variables
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+|Name|Description|
+|----|-----------|
+|REACT_APP_API_DOMAIN|API domain, here you can put the local url for the [backend repository](https://github.com/rafavilomar/ranking-backend)|
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Visuals
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Some images about how the interface looks now.
 
-### `yarn eject`
+#### Home Page
+![image](https://user-images.githubusercontent.com/38932497/157776086-adf0c988-5f12-414f-a09c-ad2441b82315.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Teacher List Page
+![image](https://user-images.githubusercontent.com/38932497/157776250-a040d686-6eb5-40f3-8df7-23ba309e77b0.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Teacher Profile Page
+![image](https://user-images.githubusercontent.com/38932497/157776488-7070fddc-9416-431b-bea7-f5f358cd6472.png)
