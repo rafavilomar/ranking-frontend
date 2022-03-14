@@ -1,3 +1,11 @@
+![React.js](https://img.shields.io/badge/-React_js-61DAFB?style=flat&logo=react&logoColor=000000)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=000000)
+![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?style=flat&logo=tailwind-css&logoColor=ffffff)
+![Vercel](https://img.shields.io/badge/-Vercel-000000?style=flat&logo=vercel&logoColor=ffffff)     
+
+![issues](https://img.shields.io/github/issues/rafavilomar/ranking-frontend)
+![pull requests](https://img.shields.io/github/issues-pr/rafavilomar/ranking-frontend)
+
 # Ranking
 
 Ranking is a platform for students by students where users can express their opinions and thoughts about teachers, making votes and writing optional comments.
